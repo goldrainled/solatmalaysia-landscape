@@ -1,14 +1,15 @@
+<body>
+
 <!-- Background slideshow -->
 <div class="slideshow-bg">
-    <img src="bg1.jpg" alt="">
-    <img src="bg2.jpg" alt="">
-    <img src="bg3.jpg" alt="">
-    <img src="bg4.jpg" alt="">
+    <img src="bg1.jpg" />
+    <img src="bg2.jpg" />
+    <img src="bg3.jpg" />
+    <img src="bg4.jpg" />
 </div>
 
 <div id="app">
 
-    <!-- FIXED LAYOUT -->
     <div class="scroll-area">
 
         <!-- HEADER -->
@@ -21,10 +22,8 @@
         <!-- LEFT SIDE -->
         <div class="left-col">
 
-            <!-- TOP 2 CARDS -->
             <div class="row-two">
 
-                <!-- CURRENT PRAYER -->
                 <div class="card top-card">
                     <div class="top-inner">
                         <div id="currentPrayerTime" class="big-time">--:--</div>
@@ -32,7 +31,6 @@
                     </div>
                 </div>
 
-                <!-- WAKTU SEKARANG -->
                 <div class="card top-card">
                     <div class="top-inner">
                         <div class="card-title">Waktu Sekarang</div>
@@ -40,20 +38,16 @@
                     </div>
                 </div>
 
-            </div><!-- row-two -->
+            </div>
 
-            <!-- MENUJU CARD -->
             <div class="card menuju-card">
                 <div class="card-title">Menuju</div>
                 <div id="nextPrayerNameLarge" class="big-next">--</div>
             </div>
 
-            <!-- COUNTDOWN LABEL -->
             <div class="count-label">Waktu Solat Seterusnya</div>
 
-            <!-- COUNTDOWN -->
             <div class="countdown-row">
-
                 <div class="count-box">
                     <div id="cdHour" class="count-num">00</div>
                     <div class="count-text">JAM</div>
@@ -68,44 +62,26 @@
                     <div id="cdSec" class="count-num">00</div>
                     <div class="count-text">SAAT</div>
                 </div>
+            </div>
 
-            </div><!-- countdown-row -->
+        </div>
 
-        </div><!-- left-col -->
-
-        <!-- RIGHT SIDE – 7 PRAYER BOXES -->
+        <!-- RIGHT SIDE -->
         <div class="right-col">
 
-            <div id="cardIsmak" class="prayer-row">
-                <span>Imsak</span><span id="imsakTime">--:--</span>
-            </div>
+            <div class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
+            <div class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
+            <div class="prayer-row"><span>Syuruk</span><span id="syurukTime">--:--</span></div>
+            <div class="prayer-row"><span>Zohor</span><span id="zohorTime">--:--</span></div>
+            <div class="prayer-row"><span>Asar</span><span id="asarTime">--:--</span></div>
+            <div class="prayer-row"><span>Maghrib</span><span id="maghribTime">--:--</span></div>
+            <div class="prayer-row"><span>Isyak</span><span id="isyakTime">--:--</span></div>
 
-            <div id="cardSubuh" class="prayer-row">
-                <span>Subuh</span><span id="subuhTime">--:--</span>
-            </div>
+        </div>
 
-            <div id="cardSyuruk" class="prayer-row">
-                <span>Syuruk</span><span id="syurukTime">--:--</span>
-            </div>
+    </div><!-- END scroll-area -->
 
-            <div id="cardZohor" class="prayer-row">
-                <span>Zohor</span><span id="zohorTime">--:--</span>
-            </div>
+</div><!-- END #app -->
 
-            <div id="cardAsar" class="prayer-row">
-                <span>Asar</span><span id="asarTime">--:--</span>
-            </div>
-
-            <div id="cardMaghrib" class="prayer-row">
-                <span>Maghrib</span><span id="maghribTime">--:--</span>
-            </div>
-
-            <div id="cardIsyak" class="prayer-row">
-                <span>Isyak</span><span id="isyakTime">--:--</span>
-            </div>
-
-        </div><!-- right-col -->
-
-    </div><!-- scroll-area -->
-
-</div><!-- app -->
+<script src="main.js"></script>
+</body>
