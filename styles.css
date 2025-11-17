@@ -321,89 +321,94 @@ html, body {
 
 @media (min-aspect-ratio: 16/9) {
 
-    /* Root layout becomes 2-column grid */
+    /* Reduce vertical padding */
     .scroll-area {
-        display: grid !important;
-        grid-template-columns: 1.3fr 1fr;
-        grid-template-rows: auto 1fr;
-        column-gap: 3vw;
-        row-gap: 2vh;
-        padding: 2vh 3vw;
-        height: 100vh;
-        overflow: hidden; /* prevent scrolling in landscape */
+        padding: 1.5vh 2vw !important;
+        row-gap: 1.5vh !important;
+        column-gap: 2vw !important;
     }
 
-    /* Header across whole top */
+    /* Header tighter */
     .header-area {
-        grid-column: 1 / span 2;
-        text-align: center;
-        margin: 0 0 1vh 0 !important;
-        padding: 0 !important;
+        margin-bottom: 1vh !important;
     }
 
     #dateTodayG {
-        font-size: clamp(28px, 3vw, 46px) !important;
-        font-weight: 800;
+        font-size: clamp(20px, 2.2vw, 34px) !important;
     }
-
     #dateTodayH,
     #zoneName {
-        font-size: clamp(20px, 2vw, 32px) !important;
-        font-weight: 700;
+        font-size: clamp(16px, 1.8vw, 28px) !important;
     }
 
-    /* Left panel becomes vertical stack */
+    /* Cards smaller */
     .card,
     .card-current {
-        margin: 0 0 2vh 0 !important;
-        width: 100% !important;
+        padding: clamp(10px, 1.3vw, 20px) !important;
+        margin: 0 0 1.2vh !important;
+        border-radius: 14px !important;
     }
 
-    /* Countdown container bigger + aligned left */
+    /* Clock and big numbers reduce size */
+    .time-big {
+        font-size: clamp(28px, 4vw, 48px) !important;
+    }
+
+    .time-medium {
+        font-size: clamp(22px, 3vw, 38px) !important;
+    }
+
+    .card-title {
+        font-size: clamp(14px, 1.6vw, 22px) !important;
+    }
+
+    /* Next prayer "Menuju" title */
+    .section-title {
+        font-size: clamp(14px, 1.7vw, 22px) !important;
+        margin: 1vh 0 0.5vh !important;
+    }
+
+    /* Countdown smaller */
     .countdown-container {
-        justify-content: flex-start !important;
-        gap: 2vw !important;
-        margin: 2vh 0 !important;
+        gap: 1.8vw !important;
+        margin: 1.5vh 0 2vh !important;
     }
 
     .count-item {
-        min-width: clamp(90px, 9vw, 140px);
-        min-height: clamp(110px, 12vw, 160px);
+        min-width: clamp(70px, 7vw, 100px) !important;
+        min-height: clamp(90px, 9vw, 130px) !important;
+        padding: 10px !important;
+        border-radius: 14px !important;
     }
 
-    /* Title "Waktu Solat Seterusnya" left aligned */
-    .section-title {
-        text-align: left !important;
-        margin: 1vh 0 0.5vh 0 !important;
+    .count-number {
+        font-size: clamp(22px, 3.5vw, 40px) !important;
     }
 
-    /* Right column prayer list */
-    #cardIsmak,
-    #cardSubuh,
-    #cardSyuruk,
-    #cardZohor,
-    #cardAsar,
-    #cardMaghrib,
-    #cardIsyak {
-        margin: 0;
-        width: 100% !important;
-        padding: 1.2vh 1.8vw !important;
-        font-size: clamp(18px, 1.8vw, 26px) !important;
+    .count-text {
+        font-size: clamp(12px, 1.4vw, 18px) !important;
     }
 
-    /* EXACT highlight style in screenshot */
+    /* Prayer List fits better */
+    .prayer-row {
+        padding: 1vh 1.2vw !important;
+        margin: 0.5vh 0 !important;
+        border-radius: 12px !important;
+        font-size: clamp(14px, 1.5vw, 20px) !important;
+    }
+
+    /* Active highlight same look (yellow box) */
     .currentPrayer {
-        background: #c2a437 !important;
-        color: #000 !important;
-        border: 2px solid #ffe384 !important;
-        box-shadow: 0 0 20px rgba(255,220,90,0.8);
+        border-width: 2px !important;
+        box-shadow: 0 0 12px rgba(255,230,120,0.6) !important;
     }
 
-    /* Remove vertical scrolling in landscape */
+    /* Prevent overflow */
     .app-root {
         overflow: hidden !important;
     }
 }
+
 
 /* Small helper to ensure cards never overflow horizontally */
 .card, .prayer-row { box-sizing: border-box; max-width: 100%; }
