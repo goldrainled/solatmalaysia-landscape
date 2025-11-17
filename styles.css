@@ -1,0 +1,321 @@
+/* styles.css — Optimized for Option A (NO JS scaling)
+   - Mobile-first responsive
+   - No transform()/scale() required
+   - Constrained max-width so UI doesn't blow up on desktop/TV
+   - Invisible scrollbars, smooth touch scrolling
+   - Prevent Chrome auto-dark tint and overscroll glow
+*/
+
+/* reset & base */
+* { box-sizing: border-box; }
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent !important;             /* background color */
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* prevent Chrome auto-dark tint and overscroll glow */
+    color-scheme: light !important;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* =============================================================
+   FULLSCREEN BACKGROUND SLIDESHOW
+============================================================= */
+
+.slideshow-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.slideshow-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeBG 40s infinite ease-in-out;
+}
+
+/* For 4 images */
+.slideshow-bg img:nth-child(1){ animation-delay: 0s; }
+.slideshow-bg img:nth-child(2){ animation-delay: 10s; }
+.slideshow-bg img:nth-child(3){ animation-delay: 20s; }
+.slideshow-bg img:nth-child(4){ animation-delay: 30s; }
+
+@keyframes fadeBG {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    40%  { opacity: 1; }
+    55%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* =============================================================
+   FIX: Always show slideshow behind content
+============================================================= */
+#viewportHost,
+.app-root,
+.scroll-area {
+    background: transparent !important;
+}
+
+#viewportHost,
+.app-root {
+    position: relative;
+    z-index: 2;
+}
+
+/* viewportHost: fixed layer that centers the app */
+#viewportHost {
+    position: fixed;
+    inset: 0;                         /* top/right/bottom/left = 0 */
+    display: flex;
+    align-items: center;              /* vertical center */
+    justify-content: center;          /* horizontal center */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    overflow: hidden;                 /* host never scrolls */
+}
+
+/* app-root: responsive container that can scroll vertically if content taller than viewport */
+.app-root {
+    width: 100%;
+    max-width: 1224px;                /* design constraint — prevents huge scaling on desktop */
+    min-width: 320px;                 /* ensure small phones are handled */
+    height: 100%;
+    overflow-y: auto;                 /* allow vertical scrolling when needed */
+    overflow-x: hidden;
+    padding: 22px 16px;               /* page padding */
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* hide scrollbars visually but keep scrolling functional */
+.app-root {
+    scrollbar-width: none;            /* Firefox */
+    -ms-overflow-style: none;         /* IE/Edge */
+}
+.app-root::-webkit-scrollbar { display: none; } /* Chrome, Safari */
+
+/* HEADER AREA 3 ROWS */
+.header-area {
+    margin-top:6px;
+    margin-bottom:20px;
+    text-align:center;
+    padding-left:8px;
+    padding-right:8px;
+    display:flex;
+    flex-direction:column;
+    gap:6px; /* more spacing */
+}
+
+/* Row 1 — Gregorian date (bigger than before) */
+#dateTodayG {
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* Row 2 — Hijri date (bigger & stronger) */
+#dateTodayH {
+    font-size: clamp(20px, 3.8vw, 38px);
+    font-weight: 650;
+    opacity: 0.95;
+    line-height: 1.1;
+}
+
+/* Row 3 — Location (bigger but slightly softer) */
+#zoneName {
+    font-size: clamp(20px, 3.8vw, 38px);
+    font-weight: 700;
+    opacity: 0.85;
+    line-height: 1.1;
+}
+
+#currentPrayerName {
+    font-size: clamp(36px, 5vw, 60px) !important;
+    font-weight: 900;
+   margin-bottom: 12px; /* Adjust gap */
+}
+
+#currentPrayerTime {
+    margin-top: 0;
+}
+
+#nextPrayerNameLarge {
+    font-size: clamp(36px, 5vw, 60px) !important;
+    font-weight: 900;
+}
+
+/* Card base */
+.card {
+    background: rgba(255,255,255,0.12);
+    padding: clamp(14px, 2.8vw, 28px);
+    margin: 14px auto;
+    border-radius: 20px;
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    text-align: center;
+}
+
+.card-current {
+    padding: clamp(14px, 2.8vw, 28px);
+    width: 100%;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 20px rgba(0,0,0,0.45);
+    margin: 14px auto;
+   text-align: center;
+}
+
+/* Titles & sizes — use clamp to adapt to screen widths */
+.card-title {
+    font-size: clamp(18px, 3.2vw, 32px);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Clock and large numbers */
+.time-big {
+    font-size: clamp(36px, 10vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+}
+
+.time-medium {
+    font-size: clamp(28px, 8vw, 58px);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: clamp(16px, 3.2vw, 40px);
+    margin-top: 6px;
+    opacity: 0.95;
+}
+
+/* Section title */
+.section-title {
+    font-size: clamp(18px, 3.5vw, 32px);
+    font-weight: 800;
+    margin-top: 26px;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+/* =============================================================
+   COUNTDOWN (BIGGER VERSION)
+============================================================= */
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin: 22px auto 32px;
+}
+
+.count-item {
+    background: rgba(255,255,255,0.12);
+    padding: 18px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 20px rgba(0,0,0,0.45);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 90px;   /* allow box to EXPAND */
+    min-height: 120px; /* allow box to EXPAND */
+    width: auto;
+    height: auto;
+}
+
+.count-number {
+    font-size: clamp(32px, 8vw, 80px);  /* BIGGER number */
+    font-weight: 900;
+    line-height: 1;
+}
+
+.count-text {
+    font-size: clamp(16px, 4vw, 28px);  /* BIGGER text */
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* Blinking highlight for countdown */
+@keyframes blinkPulse {
+    0%   { transform: scale(1);     box-shadow: 0 0 10px rgba(255,70,70,0.4); }
+    50%  { transform: scale(1.10);  box-shadow: 0 0 26px rgba(255,0,0,0.9); }
+    100% { transform: scale(1);     box-shadow: 0 0 10px rgba(255,70,70,0.4); }
+}
+
+.count-urgent {
+    background: #ff3333 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+    animation: blinkPulse 1.2s infinite ease-in-out !important;
+}
+
+/* Prayer rows (list) */
+.prayer-row {
+    background: rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: clamp(12px, 3vw, 18px) clamp(16px, 4vw, 24px);
+    width: 100%;
+    margin: 8px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(16px, 3.2vw, 32px);
+    font-weight: 700;
+}
+
+/* Active prayer highlight */
+.currentPrayer {
+    background: #c7a000 !important;
+    border: 3px solid #ffe44c !important;
+    box-shadow: 0 0 18px #ffea73;
+    color: #000 !important;
+}
+
+/* Utility: keep text centered blocks consistent on small screens */
+.card, .prayer-row, .count-item { word-break: keep-all; }
+
+/* Prevent content from touching the very top/ bottom on small screens */
+@media (max-height: 700px) {
+    .app-root { padding-top: 12px; padding-bottom: 12px; }
+}
+
+/* On very wide screens (desktop/TV) increase spacing slightly */
+@media (min-width: 1400px) {
+    .app-root { padding-left: 48px; padding-right: 48px; }
+    .card { max-width: 1100px; margin-left: auto; margin-right: auto; }
+}
+
+/* Accessibility: increase font sizes with user preference */
+@media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto; transition: none !important; animation: none !important; }
+}
+
+/* Small helper to ensure cards never overflow horizontally */
+.card, .prayer-row { box-sizing: border-box; max-width: 100%; }
+
+/* End of styles */
