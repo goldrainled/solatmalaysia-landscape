@@ -119,8 +119,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 32px;
-    margin-top: 1vh;
+    gap: 22px;
+    margin-top: 22px auto 32px;
 }
 
 /* ⭐ FIX: replaced old 7vw x 10vw — now fully adjustable */
@@ -136,17 +136,19 @@ html, body {
     align-items: center;
     justify-content: center;
 
-    min-width: 150px;    /* ← make wider */
-    min-height: 170px;   /* ← make taller */
+    min-width: 200px;    /* ← make wider */
+    min-height: 120px;   /* ← make taller */
+    width: auto;
+    height: auto;
 }
 
 .count-num {
-    font-size: clamp(50px, 6vw, 110px);
+    font-size: clamp(50px, 8vw, 110px);
     font-weight: 900;
     line-height: 1;
 }
 .count-text {
-    font-size: clamp(18px, 2.5vw, 35px);
+    font-size: clamp(18px, 4vw, 35px);
     margin-top: 12px;
     font-weight: 700;
     letter-spacing: 1px;
