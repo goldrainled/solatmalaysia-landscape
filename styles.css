@@ -1,224 +1,143 @@
-/* ================================================================
-   FINAL LANDSCAPE 16:9 SOLAT DISPLAY CSS
-   EXACTLY MATCHES YOUR SCREENSHOT
-   For 1920x1080, LED panels, Tablets, Desktop
-================================================================ */
-
-/* RESET */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #1b1607;
-    font-family: Arial, sans-serif;
-    color: #fff;
-}
-
-/* BACKGROUND SLIDESHOW */
-.slideshow-bg {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-}
-.slideshow-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    opacity: 0;
-    animation: fadeBG 40s infinite ease-in-out;
-}
-.slideshow-bg img:nth-child(1){ animation-delay: 0s; }
-.slideshow-bg img:nth-child(2){ animation-delay: 10s; }
-.slideshow-bg img:nth-child(3){ animation-delay: 20s; }
-.slideshow-bg img:nth-child(4){ animation-delay: 30s; }
-
-@keyframes fadeBG {
-    0% { opacity:0; }
-    10% { opacity:1; }
-    40% { opacity:1; }
-    55% { opacity:0; }
-    100% { opacity:0; }
-}
-
-/* HOST & APP */
-#viewportHost {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-}
-.app-root {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden !important;
-}
-
-/* ================================================================
-   SCROLL AREA → FIXED 16:9 GRID
-================================================================ */
+/******************************************************
+  GRID LAYOUT (2 COLUMN LIKE YOUR IMAGE)
+******************************************************/
 .scroll-area {
-    position: relative;
     display: grid;
-    grid-template-columns: 1.3fr 0.8fr;
+    grid-template-columns: 1.4fr 1fr;
     grid-template-rows: auto 1fr;
-    gap: 2vh 3vw;
-    width: 100%;
-    height: 100%;
+    gap: 3vh 3vw;
     padding: 4vh 4vw;
+    height: 100vh;
     overflow: hidden;
 }
 
-/* ================================================================
-   HEADER (FULL WIDTH)
-================================================================ */
+/***********************
+ HEADER (FULL WIDTH)
+************************/
 .header-area {
     grid-column: 1 / span 2;
     text-align: center;
+    color: #fff;
 }
-
 #dateTodayG {
     font-size: 3vw;
     font-weight: 800;
 }
-#dateTodayH {
+#dateTodayH, #zoneName {
     font-size: 1.7vw;
     font-weight: 700;
-    margin-top: 0.8vh;
-}
-#zoneName {
-    font-size: 1.7vw;
-    font-weight: 700;
-    margin-top: 0.5vh;
+    margin-top: 0.7vh;
 }
 
-/* ================================================================
-   LEFT COLUMN BLOCKS
-================================================================ */
+/***********************
+ LEFT SIDE
+************************/
 .left-col {
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 3vh;
 }
 
-/* CARD STYLE (MATCH SCREENSHOT) */
-.card,
-.card-current {
+.row-two {
+    display: flex;
+    gap: 3vw;
+}
+
+/***********************
+ CARD STYLE
+************************/
+.card {
     background: #5f5948;
-    border: 2px solid #3a362f;
-    border-radius: 20px;
-    padding: 2vh 1.5vw;
-    box-shadow: 0 0 16px rgba(0,0,0,0.45);
+    border-radius: 18px;
+    border: 2px solid #3d3a32;
+    padding: 2vh 2vw;
     text-align: center;
+    box-shadow: 0 0 16px rgba(0,0,0,0.5);
 }
 
-/* TITLES */
 .card-title {
     font-size: 1.2vw;
-    font-weight: 700;
+    color: #fff;
     margin-bottom: 1vh;
 }
 
-/* TIME DISPLAY */
-.time-big {
-    font-size: 3vw;
+.big-time {
+    font-size: 2.8vw;
     font-weight: 900;
 }
-.time-medium {
-    font-size: 2.6vw;
-    font-weight: 900;
-}
-.time-label {
+
+.small-label {
     font-size: 1.4vw;
-    margin-bottom: 1vh;
     font-weight: 700;
 }
 
-/* MENUJU TITLE */
-.section-title {
-    font-size: 1.2vw;
-    text-align: center;
-    margin: 1.5vh 0 0.8vh;
+.menuju-card {
+    padding: 2vh 2vw;
 }
-
-/* ================================================================
-   COUNTDOWN BLOCK
-================================================================ */
-.countdown-container {
-    display: flex;
-    justify-content: center;
-    gap: 2.8vw;
-}
-
-.count-item {
-    background: #514c41;
-    border: 2px solid #3b372f;
-    width: 7vw;
-    height: 9.5vw;
-    border-radius: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0 0 12px rgba(0,0,0,0.45);
-}
-
-.count-number {
-    font-size: 2.4vw;
+.big-next {
+    font-size: 2.8vw;
     font-weight: 900;
 }
+
+/***********************
+ COUNTDOWN
+************************/
+.count-label {
+    text-align: center;
+    font-size: 1.3vw;
+    font-weight: 700;
+    margin-top: -1vh;
+}
+
+.countdown-row {
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+}
+
+.count-box {
+    width: 7vw;
+    height: 10vw;
+    background: #464338;
+    border-radius: 14px;
+    text-align: center;
+    padding-top: 1vh;
+}
+
+.count-num {
+    font-size: 2.5vw;
+    font-weight: 900;
+}
+
 .count-text {
     font-size: 1vw;
-    margin-top: 0.5vh;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* URGENT COUNTDOWN */
-.count-urgent {
-    background: #ff4444 !important;
-    color: #fff !important;
-    border-color: #fff !important;
-    animation: urgentBlink 1s infinite ease-in-out;
-}
-@keyframes urgentBlink {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-}
-
-/* ================================================================
-   RIGHT COLUMN (PRAYER LIST)
-================================================================ */
+/***********************
+ RIGHT SIDE (PRAYER LIST)
+************************/
 .right-col {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 1.6vh;
+    gap: 1.5vh;
 }
 
 .prayer-row {
     background: #4f4a3d;
     border-radius: 14px;
-    border: 2px solid #3a362e;
-    padding: 1.4vh 1.2vw;
+    border: 2px solid #3a352c;
+    padding: 1.8vh 1.5vw;
+    font-size: 1.4vw;
+    font-weight: 700;
     display: flex;
     justify-content: space-between;
-    font-size: 1.5vw;
-    font-weight: 700;
 }
 
-/* ACTIVE PRAYER (YELLOW) */
+/* HIGHLIGHT */
 .currentPrayer {
-    background: #c9ab3d !important;
-    border: 3px solid #ffe68f !important;
-    box-shadow: 0 0 20px rgba(255,240,150,0.9) !important;
+    background: #c7a000 !important;
+    border: 3px solid #ffe44c !important;
     color: #000 !important;
+    box-shadow: 0 0 20px #ffeb7a;
 }
