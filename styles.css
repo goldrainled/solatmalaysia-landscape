@@ -135,38 +135,52 @@ html, body {
 }
 
 /* ============================================================
-   COUNTDOWN SECTION
+   COUNTDOWN SECTION (IMPROVED VERSION)
 ============================================================ */
 .count-label {
     text-align: center;
-    font-size: 1.4vw;
-    font-weight: 700;
+    font-size: 1.5vw;
+    font-weight: 800;
+    margin-bottom: 1vh;
 }
 
 .countdown-row {
     display: flex;
     justify-content: center;
-    gap: 6vw;
+    gap: 4vw; /* wider spacing */
 }
 
+/* COUNTDOWN BOX — improved layout */
 .count-box {
-    width: 14vw;
-    height: 8vw;
+    width: 12vw;          /* wider */
+    height: 13vh;         /* taller, proportional */
     background: #464338;
-    border-radius: 14px;
+    border-radius: 18px;
     border: 2px solid #3d3a32;
-    text-align: center;
-    padding-top: 1vh;
+
+    display: flex;                /* TRUE CENTERING */
+    flex-direction: column;
+    justify-content: center;      /* vertical center */
+    align-items: center;          /* horizontal center */
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
+/* BIG NUMBER */
 .count-num {
-    font-size: 2.5vw;
+    font-size: 3.2vw;     /* bigger */
     font-weight: 900;
+    line-height: 1;
+    margin: 0;
 }
+
+/* LABEL TEXT */
 .count-text {
-    font-size: 1vw;
-    margin-top: 0.5vh;
+    font-size: 1.2vw;
+    font-weight: 700;
+    margin-top: 0.4vh;
 }
+
 
 /* ============================================================
    RIGHT COLUMN (PRAYER LIST)
