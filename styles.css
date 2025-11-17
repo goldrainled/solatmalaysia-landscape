@@ -68,6 +68,7 @@ body, html {
     grid-column: 1 / span 2;
     text-align: center;
 }
+
 #dateTodayG {
     font-size: 3vw;
     font-weight: 900;
@@ -79,36 +80,29 @@ body, html {
     font-weight: 600;
 }
 
-/* ==========================================================
+/* ============================================================
    PERFECT ALIGNMENT FOR TOP TWO CARDS
-========================================================== */
+============================================================ */
 .row-two {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 3vw !important;
-    align-items: stretch !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3vw;
+    align-items: stretch;
 }
 
-/* Make both cards same height */
-.row-two .top-card {
-    height: 100% !important;
-    display: flex !important;
+.top-card {
+    display: flex;
+    height: 100%;
 }
 
-/* Center content vertically inside card */
-.row-two .top-card .top-inner {
-    margin: auto !important;
-    text-align: center !important;
+.top-inner {
+    margin: auto;
+    text-align: center;
 }
 
-/* Ensure big-time text stays consistent */
-.row-two .big-time {
-    font-size: 2.8vw;
-    font-weight: 900;
-}
-
-
-/* Cards */
+/* ============================================================
+   CARD STYLE
+============================================================ */
 .card {
     background: #5f5948;
     padding: 2vh 2vw;
@@ -122,6 +116,8 @@ body, html {
     font-size: 1.2vw;
     margin-bottom: 1vh;
 }
+
+/* TIME TEXT STYLES */
 .big-time {
     font-size: 2.8vw;
     font-weight: 900;
@@ -135,7 +131,9 @@ body, html {
     font-weight: 900;
 }
 
-/* Countdown section */
+/* ============================================================
+   COUNTDOWN SECTION
+============================================================ */
 .count-label {
     text-align: center;
     font-size: 1.4vw;
