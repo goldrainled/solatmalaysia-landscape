@@ -18,7 +18,7 @@ html, body {
 .slideshow-bg {
     position: fixed;
     inset: 0;
-    z-index: 0 !important; /* ALWAYS behind */
+    z-index: 0 !important;
 }
 .slideshow-bg img {
     position: absolute;
@@ -39,17 +39,17 @@ html, body {
 }
 
 /* ============================================================
-   MAIN APP CONTAINER (BRING CONTENT TO FRONT)
+   APP ABOVE BACKGROUND
 ============================================================ */
 #app {
     position: relative !important;
-    z-index: 9999 !important; /* FIX: bring content above slideshow */
+    z-index: 9999 !important;
     width: 100vw !important;
     height: 100vh !important;
 }
 
 /* ============================================================
-   FIXED 16:9 GRID LAYOUT
+   16:9 LAYOUT GRID
 ============================================================ */
 .scroll-area {
     display: grid;
@@ -60,9 +60,6 @@ html, body {
 
     width: 100vw !important;
     height: 100vh !important;
-
-    position: relative !important;
-    z-index: 10000 !important; /* FIX: ensure ABOVE background */
 }
 
 /* ============================================================
@@ -72,11 +69,7 @@ html, body {
     grid-column: 1 / span 2;
     text-align: center;
 }
-
-#dateTodayG {
-    font-size: 3vw;
-    font-weight: 900;
-}
+#dateTodayG { font-size: 3vw; font-weight: 900; }
 #dateTodayH,
 #zoneName {
     font-size: 1.7vw;
@@ -85,7 +78,7 @@ html, body {
 }
 
 /* ============================================================
-   PERFECT ALIGNMENT FOR TOP TWO CARDS
+   TOP TWO CARDS
 ============================================================ */
 .row-two {
     display: grid;
@@ -93,16 +86,8 @@ html, body {
     gap: 3vw;
     align-items: stretch;
 }
-
-.top-card {
-    display: flex;
-    height: 100%;
-}
-
-.top-inner {
-    margin: auto;
-    text-align: center;
-}
+.top-card { display:flex; height:100%; }
+.top-inner { margin:auto; text-align:center; }
 
 /* ============================================================
    CARD STYLE
@@ -112,32 +97,17 @@ html, body {
     padding: 2vh 2vw;
     border-radius: 18px;
     border: 2px solid #3d3a32;
-    text-align: center;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    text-align: center;
 }
-
-.card-title {
-    font-size: 1.2vw;
-    margin-bottom: 1vh;
-}
-
-.big-time {
-    font-size: 2.8vw;
-    font-weight: 900;
-}
-.small-label {
-    font-size: 1.4vw;
-    font-weight: 700;
-}
-.big-next {
-    font-size: 2.8vw;
-    font-weight: 900;
-}
+.card-title { font-size: 1.2vw; margin-bottom: 1vh; }
+.big-time { font-size: 2.8vw; font-weight: 900; }
+.small-label { font-size: 1.4vw; font-weight: 700; }
+.big-next { font-size: 2.8vw; font-weight: 900; }
 
 /* ============================================================
-   COUNTDOWN SECTION (USER-FRIENDLY & ADJUSTABLE)
+   COUNTDOWN — UPDATED & WORKING
 ============================================================ */
-
 .count-label {
     text-align: center;
     font-size: 1.6vw;
@@ -145,46 +115,45 @@ html, body {
     margin-bottom: 1vh;
 }
 
-.countdown-container {
+.countdown-row {
     display: flex;
     justify-content: center;
-    gap: 32px;              /* spacing between boxes */
-    margin: 20px auto 20px;
+    align-items: center;
+    gap: 32px;
+    margin-top: 1vh;
 }
 
-.count-item {
-    background: #464338;    /* match your box theme */
-    padding: 18px 22px;
+/* ⭐ FIX: replaced old 7vw x 10vw — now fully adjustable */
+.count-box {
+    background: #464338;
+    padding: 20px;
     border-radius: 20px;
     border: 2px solid #3d3a32;
     box-shadow: 0 0 20px rgba(0,0,0,0.45);
-    text-align: center;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    min-width: 140px;       /* easier to adjust */
-    min-height: 150px;      /* taller card look */
+    min-width: 150px;    /* ← make wider */
+    min-height: 170px;   /* ← make taller */
 }
 
-.count-number {
-    font-size: clamp(40px, 6vw, 90px);   /* responsive big number */
+.count-num {
+    font-size: clamp(50px, 6vw, 110px);
     font-weight: 900;
     line-height: 1;
 }
-
 .count-text {
-    font-size: clamp(18px, 2.5vw, 30px);
+    font-size: clamp(18px, 2.5vw, 35px);
     margin-top: 12px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-
 /* ============================================================
-   RIGHT COLUMN (PRAYER LIST)
+   RIGHT PRAYER LIST
 ============================================================ */
 .right-col {
     display: flex;
@@ -202,7 +171,6 @@ html, body {
     justify-content: space-between;
 }
 
-/* Highlight next prayer */
 .currentPrayer {
     background: #c7a000 !important;
     border: 3px solid #ffe44c !important;
