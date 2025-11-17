@@ -1,87 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Solat Display — Landscape 16:9</title>
+
+<!-- INLINE CSS: paste this whole file as index.html to ensure styles load -->
+<style>
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #1b1607;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* ============================================================
+   BACKGROUND SLIDESHOW (kept)
+============================================================ */
+.slideshow-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: #111;
+}
+.slideshow-bg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeShow 40s infinite;
+}
+.slideshow-bg img:nth-child(1){ animation-delay: 0s; }
+.slideshow-bg img:nth-child(2){ animation-delay: 10s; }
+.slideshow-bg img:nth-child(3){ animation-delay: 20s; }
+.slideshow-bg img:nth-child(4){ animation-delay: 30s; }
+
+@keyframes fadeShow {
+    0%,100% { opacity:0; }
+    10%,40% { opacity:1; }
+}
+
+/* ============================================================
+   MAIN APP CONTAINER (ensure visible above slideshow)
+============================================================ */
+#app {
+    position: relative !important;
+    z-index: 9999 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow: hidden;
+}
+
+/* ============================================================
+   16:9 Grid Layout
+============================================================ */
+.scroll-area {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 4vh 4vw;
+    padding: 4vh 4vw;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 10000;
+}
+
+/* HEADER */
+.header-area {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+#dateTodayG {
+    font-size: 3vw;
+    font-weight: 900;
+}
+#dateTodayH,
+#zoneName {
+    font-size: 1.7vw;
+    margin-top: 1vh;
+    font-weight: 600;
+}
+
+/* TOP TWO CARD ALIGN */
+.row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3vw;
+    align-items: stretch;
+}
+.top-card { display:flex; height:100%; }
+.top-inner { margin:auto; text-align:center; }
+
+/* CARD STYLE */
+.card {
+    background: rgba(95,89,72,0.95);
+    padding: 2vh 2vw;
+    border-radius: 18px;
+    border: 2px solid rgba(61,58,50,0.9);
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    color: #fff;
+}
+.card-title { font-size: 1.2vw; margin-bottom: 1vh; }
+
+/* TIME TEXTS */
+.big-time { font-size: 2.8vw; font-weight: 900; }
+.small-label { font-size: 1.4vw; font-weight: 700; }
+.big-next { font-size: 2.8vw; font-weight: 900; }
+
+/* COUNTDOWN */
+.count-label { text-align:center; font-size:1.4vw; font-weight:700; margin-top: .4vh; }
+.countdown-row { display:flex; justify-content:center; gap:3vw; margin-top:0.8vh; }
+.count-box {
+    width: 7vw; height: 10vw;
+    background:#464338; border-radius:14px; border:2px solid #3d3a32;
+    text-align:center; padding-top:1vh;
+}
+.count-num { font-size:2.5vw; font-weight:900; }
+.count-text { font-size:1vw; margin-top:0.5vh; }
+
+/* RIGHT PRAYER LIST */
+.right-col { display:flex; flex-direction:column; gap:1.4vh; }
+.prayer-row {
+    background:#4f4a3d; padding:1.8vh 1.4vw; font-size:1.4vw;
+    border-radius:14px; border:2px solid #3a352c;
+    display:flex; justify-content:space-between;
+}
+.currentPrayer {
+    background:#c7a000 !important; border:3px solid #ffe44c !important;
+    color:#000 !important; box-shadow:0 0 20px #ffeb7a;
+}
+
+/* responsive tiny safety (only for very small screens) */
+@media (max-width:900px) {
+  .scroll-area { grid-template-columns: 1fr; grid-template-rows:auto; padding:3vh 3vw; }
+  .row-two { grid-template-columns:1fr; }
+  .count-box { width: 18vw; height: 18vw; }
+  .big-time { font-size: 6vw; }
+}
+</style>
+</head>
 <body>
 
-<!-- Background slideshow -->
+<!-- BACKGROUND SLIDESHOW -->
 <div class="slideshow-bg">
-    <img src="bg1.jpg" />
-    <img src="bg2.jpg" />
-    <img src="bg3.jpg" />
-    <img src="bg4.jpg" />
+    <img src="bg1.jpg" alt="bg1">
+    <img src="bg2.jpg" alt="bg2">
+    <img src="bg3.jpg" alt="bg3">
+    <img src="bg4.jpg" alt="bg4">
 </div>
 
+<!-- APP CONTENT -->
 <div id="app">
+  <div class="scroll-area">
 
-    <div class="scroll-area">
+    <!-- HEADER -->
+    <div class="header-area">
+      <div id="dateTodayG">Loading date...</div>
+      <div id="dateTodayH">Loading Hijri...</div>
+      <div id="zoneName">Loading zone...</div>
+    </div>
 
-        <!-- HEADER -->
-        <div class="header-area">
-            <div id="dateTodayG">Loading date...</div>
-            <div id="dateTodayH">Loading Hijri...</div>
-            <div id="zoneName">Loading zone...</div>
+    <!-- LEFT COLUMN -->
+    <div class="left-col">
+
+      <!-- top two -->
+      <div class="row-two">
+        <div class="card top-card">
+          <div class="top-inner">
+            <div id="currentPrayerTime" class="big-time">--:--</div>
+            <div id="currentPrayerName" class="small-label">--</div>
+          </div>
         </div>
 
-        <!-- LEFT SIDE -->
-        <div class="left-col">
-
-            <div class="row-two">
-
-                <div class="card top-card">
-                    <div class="top-inner">
-                        <div id="currentPrayerTime" class="big-time">--:--</div>
-                        <div id="currentPrayerName" class="small-label">--</div>
-                    </div>
-                </div>
-
-                <div class="card top-card">
-                    <div class="top-inner">
-                        <div class="card-title">Waktu Sekarang</div>
-                        <div id="currentTime" class="big-time">--:--:--</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card menuju-card">
-                <div class="card-title">Menuju</div>
-                <div id="nextPrayerNameLarge" class="big-next">--</div>
-            </div>
-
-            <div class="count-label">Waktu Solat Seterusnya</div>
-
-            <div class="countdown-row">
-                <div class="count-box">
-                    <div id="cdHour" class="count-num">00</div>
-                    <div class="count-text">JAM</div>
-                </div>
-
-                <div class="count-box">
-                    <div id="cdMin" class="count-num">00</div>
-                    <div class="count-text">MINIT</div>
-                </div>
-
-                <div class="count-box">
-                    <div id="cdSec" class="count-num">00</div>
-                    <div class="count-text">SAAT</div>
-                </div>
-            </div>
-
+        <div class="card top-card">
+          <div class="top-inner">
+            <div class="card-title">Waktu Sekarang</div>
+            <div id="currentTime" class="big-time">--:--:--</div>
+          </div>
         </div>
+      </div>
 
-        <!-- RIGHT SIDE -->
-        <div class="right-col">
+      <!-- menuju -->
+      <div class="card menuju-card" style="margin-top:1.6vh;">
+        <div class="card-title">Menuju</div>
+        <div id="nextPrayerNameLarge" class="big-next">--</div>
+      </div>
 
-            <div class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
-            <div class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
-            <div class="prayer-row"><span>Syuruk</span><span id="syurukTime">--:--</span></div>
-            <div class="prayer-row"><span>Zohor</span><span id="zohorTime">--:--</span></div>
-            <div class="prayer-row"><span>Asar</span><span id="asarTime">--:--</span></div>
-            <div class="prayer-row"><span>Maghrib</span><span id="maghribTime">--:--</span></div>
-            <div class="prayer-row"><span>Isyak</span><span id="isyakTime">--:--</span></div>
+      <!-- countdown -->
+      <div class="count-label">Waktu Solat Seterusnya</div>
+      <div class="countdown-row">
+        <div class="count-box"><div id="cdHour" class="count-num">00</div><div class="count-text">JAM</div></div>
+        <div class="count-box"><div id="cdMin" class="count-num">00</div><div class="count-text">MINIT</div></div>
+        <div class="count-box"><div id="cdSec" class="count-num">00</div><div class="count-text">SAAT</div></div>
+      </div>
 
-        </div>
+    </div><!-- left-col -->
 
-    </div><!-- END scroll-area -->
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+      <div id="cardIsmak" class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
+      <div id="cardSubuh" class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
+      <div id="cardSyuruk" class="prayer-row"><span>Syuruk</span><span id="syurukTime">--:--</span></div>
+      <div id="cardZohor" class="prayer-row"><span>Zohor</span><span id="zohorTime">--:--</span></div>
+      <div id="cardAsar" class="prayer-row"><span>Asar</span><span id="asarTime">--:--</span></div>
+      <div id="cardMaghrib" class="prayer-row"><span>Maghrib</span><span id="maghribTime">--:--</span></div>
+      <div id="cardIsyak" class="prayer-row"><span>Isyak</span><span id="isyakTime">--:--</span></div>
+    </div>
 
-</div><!-- END #app -->
+  </div><!-- scroll-area -->
+</div><!-- app -->
 
+<!-- your existing JS (keeps functionality) -->
 <script src="main.js"></script>
 </body>
+</html>
