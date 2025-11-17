@@ -106,53 +106,55 @@ html, body {
 .big-next { font-size: 2.8vw; font-weight: 900; }
 
 /* ============================================================
-   COUNTDOWN — UPDATED & WORKING
+   COUNTDOWN — MATCH YOUR SCREENSHOT
 ============================================================ */
 .count-label {
     text-align: center;
-    font-size: 1.6vw;
-    font-weight: 800;
-    margin-bottom: 1vh;
+    font-size: 1.8vw;
+    font-weight: 900;
+    margin-top: 2vh;
+    margin-bottom: 1.5vh;
 }
 
 .countdown-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 22px;
-    margin-top: 22px auto 32px;
+    gap: 4vw;               /* spacing between boxes */
+    margin-top: 1vh;
 }
 
-/* ⭐ FIX: replaced old 7vw x 10vw — now fully adjustable */
+/* Countdown Box */
 .count-box {
     background: #464338;
-    padding: 20px;
     border-radius: 20px;
     border: 2px solid #3d3a32;
     box-shadow: 0 0 20px rgba(0,0,0,0.45);
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    min-width: 200px;    /* ← make wider */
-    min-height: 120px;   /* ← make taller */
-    width: auto;
-    height: auto;
+    width: 10vw;            /* MATCH screenshot width */
+    height: 15vh;           /* MATCH screenshot height */
 }
 
+/* Countdown Numbers */
 .count-num {
-    font-size: clamp(50px, 8vw, 110px);
+    font-size: 3vw;         /* bigger like screenshot */
     font-weight: 900;
     line-height: 1;
 }
+
+/* JAM / MINIT / SAAT text */
 .count-text {
-    font-size: clamp(18px, 4vw, 35px);
-    margin-top: 12px;
+    margin-top: 0.8vh;
+    font-size: 1.2vw;
     font-weight: 700;
     letter-spacing: 1px;
 }
+
 
 /* ============================================================
    RIGHT PRAYER LIST
