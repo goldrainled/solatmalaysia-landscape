@@ -146,12 +146,12 @@ html, body {
 .countdown-row {
     display: flex;
     justify-content: center;
-    gap: 3vw;
+    gap: 6vw;
 }
 
 .count-box {
-    width: 7vw;
-    height: 10vw;
+    width: 14vw;
+    height: 8vw;
     background: #464338;
     border-radius: 14px;
     border: 2px solid #3d3a32;
