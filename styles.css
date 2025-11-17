@@ -18,7 +18,7 @@ html, body {
 .slideshow-bg {
     position: fixed;
     inset: 0;
-    z-index: 0 !important;
+    z-index: 0;
 }
 .slideshow-bg img {
     position: absolute;
@@ -39,17 +39,17 @@ html, body {
 }
 
 /* ============================================================
-   APP ABOVE BACKGROUND
+   MAIN APP CONTAINER
 ============================================================ */
 #app {
-    position: relative !important;
-    z-index: 9999 !important;
-    width: 100vw !important;
-    height: 100vh !important;
+    position: relative;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* ============================================================
-   16:9 LAYOUT GRID
+   MAIN GRID
 ============================================================ */
 .scroll-area {
     display: grid;
@@ -57,19 +57,20 @@ html, body {
     grid-template-rows: auto 1fr;
     gap: 4vh 4vw;
     padding: 4vh 4vw;
-
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* ============================================================
-   HEADER
-============================================================ */
+/* HEADER */
 .header-area {
     grid-column: 1 / span 2;
     text-align: center;
 }
-#dateTodayG { font-size: 3vw; font-weight: 900; }
+
+#dateTodayG {
+    font-size: 3vw;
+    font-weight: 900;
+}
 #dateTodayH,
 #zoneName {
     font-size: 1.7vw;
@@ -77,84 +78,92 @@ html, body {
     font-weight: 600;
 }
 
-/* ============================================================
-   TOP TWO CARDS
-============================================================ */
+/* TOP CARD AREA */
 .row-two {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3vw;
     align-items: stretch;
 }
-.top-card { display:flex; height:100%; }
-.top-inner { margin:auto; text-align:center; }
+.top-card {
+    display: flex;
+    height: 100%;
+}
+.top-inner {
+    margin: auto;
+    text-align: center;
+}
 
-/* ============================================================
-   CARD STYLE
-============================================================ */
+/* CARD STYLE */
 .card {
     background: #5f5948;
     padding: 2vh 2vw;
     border-radius: 18px;
     border: 2px solid #3d3a32;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
     text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
-.card-title { font-size: 1.2vw; margin-bottom: 1vh; }
-.big-time { font-size: 2.8vw; font-weight: 900; }
-.small-label { font-size: 1.4vw; font-weight: 700; }
-.big-next { font-size: 2.8vw; font-weight: 900; }
+
+.card-title {
+    font-size: 1.2vw;
+    margin-bottom: 1vh;
+}
+
+.big-time {
+    font-size: 2.8vw;
+    font-weight: 900;
+}
+.small-label {
+    font-size: 1.4vw;
+    font-weight: 700;
+}
+.big-next {
+    font-size: 2.8vw;
+    font-weight: 900;
+}
 
 /* ============================================================
-   COUNTDOWN — MATCH YOUR SCREENSHOT
+   COUNTDOWN SECTION
 ============================================================ */
 .count-label {
     text-align: center;
-    font-size: 1.8vw;
-    font-weight: 900;
-    margin-top: 2vh;
-    margin-bottom: 1.5vh;
+    font-size: 1.6vw;
+    font-weight: 800;
+    margin-bottom: 1vh;
 }
 
-.countdown-row {
+.countdown-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 4vw;               /* spacing between boxes */
+    gap: 34px;
     margin-top: 1vh;
 }
 
-/* Countdown Box */
-.count-box {
+.count-item {
     background: #464338;
-    border-radius: 20px;
+    padding: 20px 24px;
+    border-radius: 22px;
     border: 2px solid #3d3a32;
     box-shadow: 0 0 20px rgba(0,0,0,0.45);
-
+    min-width: 160px;
+    min-height: 170px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    width: 10vw;            /* MATCH screenshot width */
-    height: 15vh;           /* MATCH screenshot height */
+    justify-content: center;
 }
 
-/* Countdown Numbers */
-.count-num {
-    font-size: 3vw;         /* bigger like screenshot */
+.count-number {
+    font-size: 3.4vw;
     font-weight: 900;
     line-height: 1;
 }
 
-/* JAM / MINIT / SAAT text */
 .count-text {
-    margin-top: 0.8vh;
     font-size: 1.2vw;
     font-weight: 700;
-    letter-spacing: 1px;
+    margin-top: 1vh;
 }
-
 
 /* ============================================================
    RIGHT PRAYER LIST
