@@ -135,50 +135,51 @@ html, body {
 }
 
 /* ============================================================
-   COUNTDOWN SECTION (IMPROVED VERSION)
+   COUNTDOWN SECTION (USER-FRIENDLY & ADJUSTABLE)
 ============================================================ */
+
 .count-label {
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 1.6vw;
     font-weight: 800;
     margin-bottom: 1vh;
 }
 
-.countdown-row {
+.countdown-container {
     display: flex;
     justify-content: center;
-    gap: 4vw; /* wider spacing */
+    gap: 32px;              /* spacing between boxes */
+    margin: 20px auto 20px;
 }
 
-/* COUNTDOWN BOX — improved layout */
-.count-box {
-    width: 12vw;          /* wider */
-    height: 13vh;         /* taller, proportional */
-    background: #464338;
-    border-radius: 18px;
+.count-item {
+    background: #464338;    /* match your box theme */
+    padding: 18px 22px;
+    border-radius: 20px;
     border: 2px solid #3d3a32;
+    box-shadow: 0 0 20px rgba(0,0,0,0.45);
+    text-align: center;
 
-    display: flex;                /* TRUE CENTERING */
+    display: flex;
     flex-direction: column;
-    justify-content: center;      /* vertical center */
-    align-items: center;          /* horizontal center */
+    align-items: center;
+    justify-content: center;
 
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    min-width: 140px;       /* easier to adjust */
+    min-height: 150px;      /* taller card look */
 }
 
-/* BIG NUMBER */
-.count-num {
-    font-size: 3.2vw;     /* bigger */
+.count-number {
+    font-size: clamp(40px, 6vw, 90px);   /* responsive big number */
     font-weight: 900;
     line-height: 1;
-    margin: 0;
 }
 
-/* LABEL TEXT */
 .count-text {
-    font-size: 1.2vw;
+    font-size: clamp(18px, 2.5vw, 30px);
+    margin-top: 12px;
     font-weight: 700;
-    margin-top: 0.4vh;
+    letter-spacing: 1px;
 }
 
 
