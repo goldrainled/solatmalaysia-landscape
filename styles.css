@@ -1,51 +1,56 @@
-/******************************************************
-  GRID LAYOUT (2 COLUMN LIKE YOUR IMAGE)
-******************************************************/
+/* ================================================================
+   FIXED LANDSCAPE 16:9 LAYOUT — MATCHES YOUR SCREENSHOT EXACTLY
+================================================================ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #1b1607;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+/* BASE GRID */
 .scroll-area {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     grid-template-rows: auto 1fr;
-    gap: 3vh 3vw;
-    padding: 4vh 4vw;
+    gap: 4vh 4vw;
     height: 100vh;
-    overflow: hidden;
+    padding: 4vh 4vw;
 }
 
-/***********************
- HEADER (FULL WIDTH)
-************************/
+/* HEADER */
 .header-area {
     grid-column: 1 / span 2;
     text-align: center;
-    color: #fff;
 }
 #dateTodayG {
     font-size: 3vw;
     font-weight: 800;
 }
-#dateTodayH, #zoneName {
+#dateTodayH,
+#zoneName {
     font-size: 1.7vw;
     font-weight: 700;
-    margin-top: 0.7vh;
+    margin-top: 1vh;
 }
 
-/***********************
- LEFT SIDE
-************************/
+/* LEFT COLUMN */
 .left-col {
     display: flex;
     flex-direction: column;
     gap: 3vh;
 }
 
+/* Two cards in a row */
 .row-two {
     display: flex;
     gap: 3vw;
 }
 
-/***********************
- CARD STYLE
-************************/
+/* CARD STYLE */
 .card {
     background: #5f5948;
     border-radius: 18px;
@@ -55,40 +60,33 @@
     box-shadow: 0 0 16px rgba(0,0,0,0.5);
 }
 
+/* Card contents */
 .card-title {
     font-size: 1.2vw;
-    color: #fff;
     margin-bottom: 1vh;
 }
-
 .big-time {
     font-size: 2.8vw;
     font-weight: 900;
 }
-
 .small-label {
     font-size: 1.4vw;
     font-weight: 700;
-}
-
-.menuju-card {
-    padding: 2vh 2vw;
 }
 .big-next {
     font-size: 2.8vw;
     font-weight: 900;
 }
 
-/***********************
- COUNTDOWN
-************************/
+/* Countdown label */
 .count-label {
     text-align: center;
-    font-size: 1.3vw;
+    font-size: 1.4vw;
     font-weight: 700;
     margin-top: -1vh;
 }
 
+/* Countdown boxes */
 .countdown-row {
     display: flex;
     justify-content: center;
@@ -100,6 +98,7 @@
     height: 10vw;
     background: #464338;
     border-radius: 14px;
+    border: 2px solid #3d3a32;
     text-align: center;
     padding-top: 1vh;
 }
@@ -108,33 +107,30 @@
     font-size: 2.5vw;
     font-weight: 900;
 }
-
 .count-text {
     font-size: 1vw;
     font-weight: 700;
 }
 
-/***********************
- RIGHT SIDE (PRAYER LIST)
-************************/
+/* RIGHT COLUMN (PRAYER LIST) */
 .right-col {
     display: flex;
     flex-direction: column;
-    gap: 1.5vh;
+    gap: 1.6vh;
 }
 
 .prayer-row {
     background: #4f4a3d;
     border-radius: 14px;
     border: 2px solid #3a352c;
-    padding: 1.8vh 1.5vw;
+    padding: 1.8vh 1.4vw;
     font-size: 1.4vw;
     font-weight: 700;
     display: flex;
     justify-content: space-between;
 }
 
-/* HIGHLIGHT */
+/* Highlighted prayer */
 .currentPrayer {
     background: #c7a000 !important;
     border: 3px solid #ffe44c !important;
