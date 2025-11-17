@@ -315,6 +315,96 @@ html, body {
     * { scroll-behavior: auto; transition: none !important; animation: none !important; }
 }
 
+/* ============================================================
+   LANDSCAPE MODE — 16:9 DESIGN (MATCHES YOUR SCREENSHOT)
+============================================================ */
+
+@media (min-aspect-ratio: 16/9) {
+
+    /* Root layout becomes 2-column grid */
+    .scroll-area {
+        display: grid !important;
+        grid-template-columns: 1.3fr 1fr;
+        grid-template-rows: auto 1fr;
+        column-gap: 3vw;
+        row-gap: 2vh;
+        padding: 2vh 3vw;
+        height: 100vh;
+        overflow: hidden; /* prevent scrolling in landscape */
+    }
+
+    /* Header across whole top */
+    .header-area {
+        grid-column: 1 / span 2;
+        text-align: center;
+        margin: 0 0 1vh 0 !important;
+        padding: 0 !important;
+    }
+
+    #dateTodayG {
+        font-size: clamp(28px, 3vw, 46px) !important;
+        font-weight: 800;
+    }
+
+    #dateTodayH,
+    #zoneName {
+        font-size: clamp(20px, 2vw, 32px) !important;
+        font-weight: 700;
+    }
+
+    /* Left panel becomes vertical stack */
+    .card,
+    .card-current {
+        margin: 0 0 2vh 0 !important;
+        width: 100% !important;
+    }
+
+    /* Countdown container bigger + aligned left */
+    .countdown-container {
+        justify-content: flex-start !important;
+        gap: 2vw !important;
+        margin: 2vh 0 !important;
+    }
+
+    .count-item {
+        min-width: clamp(90px, 9vw, 140px);
+        min-height: clamp(110px, 12vw, 160px);
+    }
+
+    /* Title "Waktu Solat Seterusnya" left aligned */
+    .section-title {
+        text-align: left !important;
+        margin: 1vh 0 0.5vh 0 !important;
+    }
+
+    /* Right column prayer list */
+    #cardIsmak,
+    #cardSubuh,
+    #cardSyuruk,
+    #cardZohor,
+    #cardAsar,
+    #cardMaghrib,
+    #cardIsyak {
+        margin: 0;
+        width: 100% !important;
+        padding: 1.2vh 1.8vw !important;
+        font-size: clamp(18px, 1.8vw, 26px) !important;
+    }
+
+    /* EXACT highlight style in screenshot */
+    .currentPrayer {
+        background: #c2a437 !important;
+        color: #000 !important;
+        border: 2px solid #ffe384 !important;
+        box-shadow: 0 0 20px rgba(255,220,90,0.8);
+    }
+
+    /* Remove vertical scrolling in landscape */
+    .app-root {
+        overflow: hidden !important;
+    }
+}
+
 /* Small helper to ensure cards never overflow horizontally */
 .card, .prayer-row { box-sizing: border-box; max-width: 100%; }
 
