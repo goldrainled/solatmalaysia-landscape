@@ -1,66 +1,109 @@
-/* ================================================================
-   FIXED LANDSCAPE 16:9 LAYOUT — MATCHES YOUR SCREENSHOT EXACTLY
-================================================================ */
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-    margin: 0;
-    padding: 0;
+body, html {
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
     background: #1b1607;
     font-family: Arial, sans-serif;
-    color: #fff;
+    color: white;
 }
 
-/* BASE GRID */
+/* ============================================================
+   BACKGROUND SLIDESHOW
+============================================================ */
+.slideshow-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+.slideshow-bg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeShow 40s infinite;
+}
+.slideshow-bg img:nth-child(1){ animation-delay: 0s; }
+.slideshow-bg img:nth-child(2){ animation-delay: 10s; }
+.slideshow-bg img:nth-child(3){ animation-delay: 20s; }
+.slideshow-bg img:nth-child(4){ animation-delay: 30s; }
+
+@keyframes fadeShow {
+    0%,100% { opacity:0; }
+    10%,40% { opacity:1; }
+}
+
+/* ============================================================
+   MAIN APP CONTAINER
+============================================================ */
+#app {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================================================
+   FIXED 16:9 GRID LAYOUT
+============================================================ */
 .scroll-area {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     grid-template-rows: auto 1fr;
     gap: 4vh 4vw;
-    height: 100vh;
     padding: 4vh 4vw;
+    width: 100%;
+    height: 100%;
 }
 
-/* HEADER */
+/* ============================================================
+   HEADER
+============================================================ */
 .header-area {
     grid-column: 1 / span 2;
     text-align: center;
 }
 #dateTodayG {
     font-size: 3vw;
-    font-weight: 800;
+    font-weight: 900;
 }
 #dateTodayH,
 #zoneName {
     font-size: 1.7vw;
-    font-weight: 700;
     margin-top: 1vh;
+    font-weight: 600;
 }
 
-/* LEFT COLUMN */
+/* ============================================================
+   LEFT COLUMN
+============================================================ */
 .left-col {
     display: flex;
     flex-direction: column;
     gap: 3vh;
 }
 
-/* Two cards in a row */
+/* Two top cards */
 .row-two {
     display: flex;
     gap: 3vw;
 }
 
-/* CARD STYLE */
+/* Cards */
 .card {
     background: #5f5948;
+    padding: 2vh 2vw;
     border-radius: 18px;
     border: 2px solid #3d3a32;
-    padding: 2vh 2vw;
     text-align: center;
-    box-shadow: 0 0 16px rgba(0,0,0,0.5);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
-/* Card contents */
 .card-title {
     font-size: 1.2vw;
     margin-bottom: 1vh;
@@ -78,15 +121,13 @@ html, body {
     font-weight: 900;
 }
 
-/* Countdown label */
+/* Countdown section */
 .count-label {
     text-align: center;
     font-size: 1.4vw;
     font-weight: 700;
-    margin-top: -1vh;
 }
 
-/* Countdown boxes */
 .countdown-row {
     display: flex;
     justify-content: center;
@@ -109,28 +150,29 @@ html, body {
 }
 .count-text {
     font-size: 1vw;
-    font-weight: 700;
+    margin-top: 0.5vh;
 }
 
-/* RIGHT COLUMN (PRAYER LIST) */
+/* ============================================================
+   RIGHT COLUMN (PRAYER LIST)
+============================================================ */
 .right-col {
     display: flex;
     flex-direction: column;
-    gap: 1.6vh;
+    gap: 1.4vh;
 }
 
 .prayer-row {
     background: #4f4a3d;
-    border-radius: 14px;
-    border: 2px solid #3a352c;
     padding: 1.8vh 1.4vw;
     font-size: 1.4vw;
-    font-weight: 700;
+    border-radius: 14px;
+    border: 2px solid #3a352c;
     display: flex;
     justify-content: space-between;
 }
 
-/* Highlighted prayer */
+/* Highlight next prayer */
 .currentPrayer {
     background: #c7a000 !important;
     border: 3px solid #ffe44c !important;
