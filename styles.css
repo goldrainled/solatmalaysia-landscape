@@ -183,6 +183,7 @@ html, body {
     border: 2px solid #3a352c;
     display: flex;
     justify-content: space-between;
+    font-weight: 700;
 }
 
 .currentPrayer {
