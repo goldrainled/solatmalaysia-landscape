@@ -107,7 +107,7 @@ html, body {
 }
 
 .card-title {
-    font-size: 1.2vw;
+    font-size: 1.6vw;
     margin-bottom: 1vh;
     font-weight: 700;
 }
@@ -117,7 +117,7 @@ html, body {
     font-weight: 900;
 }
 .small-label {
-    font-size: 1.4vw;
+    font-size: 1.6vw;
     font-weight: 700;
 }
 .big-next {
