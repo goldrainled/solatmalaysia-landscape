@@ -107,6 +107,7 @@ html, body {
 .card-title {
     font-size: 1.2vw;
     margin-bottom: 1vh;
+    font-weight: 700;
 }
 
 .big-time {
