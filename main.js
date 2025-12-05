@@ -354,10 +354,17 @@ setInterval(()=>{
     const now = new Date();
     const diff = nextPrayerTime - now;
 
-    if (diff <= 0) { 
-        determineNextPrayer(); 
-        return; 
-    }
+    // FIX: Reset exactly when real time reaches prayer minute
+if (now.getHours() === nextPrayerTime.getHours() &&
+    now.getMinutes() === nextPrayerTime.getMinutes()) {
+    determineNextPrayer();
+    return;
+}
+
+if (diff <= 0) {
+    determineNextPrayer();
+    return;
+}
 
     const h = Math.floor(diff / 3600000);
     const m = Math.floor((diff / 60000) % 60);
