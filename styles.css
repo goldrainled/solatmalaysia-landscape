@@ -118,7 +118,7 @@ html, body {
 
 /* CARD STYLE */
 .card {
-    background: #5f5948;
+    background: rgba(0, 0, 0, 0.45);
     padding: 2vh 2vw;
     border-radius: 18px;
     border: 2px solid #3d3a32;
@@ -164,10 +164,10 @@ html, body {
 }
 
 .count-item {
-    background: #464338;
+    background: rgba(0, 0, 0, 0.45);
     padding: 20px 24px;
     border-radius: 22px;
-    border: 2px solid #3d3a32;
+    border: 2px solid rgba(255,255,255,0.12);
     box-shadow: 0 0 20px rgba(0,0,0,0.45);
     min-width: 160px;
     min-height: 170px;
@@ -199,7 +199,7 @@ html, body {
 }
 
 .prayer-row {
-    background: #4f4a3d;
+    background: rgba(0, 0, 0, 0.45);
     padding: 1.8vh 1.4vw;
     font-size: 1.4vw;
     border-radius: 14px;
