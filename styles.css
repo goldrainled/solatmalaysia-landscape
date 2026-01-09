@@ -4,12 +4,21 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: #1b1607;
-    font-family: Arial, sans-serif;
-    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent !important;             /* background color */
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* prevent Chrome auto-dark tint and overscroll glow */
+    color-scheme: light !important;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ============================================================
