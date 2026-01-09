@@ -189,6 +189,11 @@ html, body {
     margin-top: 1vh;
 }
 
+/* GOLD color style for last 10 minutes */
+.highlight .count-number {
+    color: #c7a000 !important;
+}
+
 /* ============================================================
    RIGHT PRAYER LIST
 ============================================================ */
