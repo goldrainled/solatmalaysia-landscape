@@ -200,6 +200,11 @@ const ZONE_MAP = {
   /* Melaka */
   "MLK01": ["melaka","melaka tengah","alor gajah","jasin","ayer keroh","masjid tanah"],
 
+  /* Negeri Sembilan */ 
+  "NGS01": { negeri: "Negeri Sembilan", daerah: "Tampin, Jempol" },
+  "NGS02": { negeri: "Negeri Sembilan", daerah: "Jelebu, Kuala Pilah, Rembau" },
+  "NGS03": { negeri: "Negeri Sembilan", daerah: "Port Dickson, Seremban" },
+
   /* Perlis */
   "PLS01": ["perlis","kangar","arau","padang besar"],
 
