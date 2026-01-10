@@ -65,27 +65,51 @@ html, body {
   100% { opacity: 0; transform: scale(1.30); }
 }
 
+#viewportHost,
+.app-root,
+.scroll-area {
+    background: transparent !important;
+}
+
+#viewportHost,
+.app-root {
+    position: relative;
+    z-index: 2;
+}
+
+/* viewport host */
 #viewportHost {
     position: fixed;
     inset: 0;
-    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-#app {
-    width: 1600px;      /* 你“设计用”的逻辑宽度 */
-    height: 900px;      /* 16:9，好算 */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+/* app root */
+.app-root {
+    width: 100%;
+    max-width: 1224px;
+    height: 100%;
+    padding: 22px 16px;
+    overflow: hidden;          /* ← 改这里 */
 }
 
+/* layout area */
 .scroll-area {
     width: 100%;
     height: 100%;
     display: grid;
 }
+
+/* prayer list auto-fit */
+.right-col {
+    display: grid;
+    grid-auto-rows: 1fr;       /* auto adapt */
+    gap: 1.2vh;
+}
+
 
 /* HEADER */
 .header-area {
