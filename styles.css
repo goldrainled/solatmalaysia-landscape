@@ -95,8 +95,8 @@ html, body {
 /* app-root: responsive container that can scroll vertically if content taller than viewport */
 .app-root {
     width: 100%;
-    max-width: 1224px;                /* design constraint — prevents huge scaling on desktop */
-    min-width: 320px;                 /* ensure small phones are handled */
+    max-width: 320px;                /* design constraint — prevents huge scaling on desktop */
+    min-width: 1224px;                 /* ensure small phones are handled */
     height: 100%;
     overflow-y: auto;                 /* allow vertical scrolling when needed */
     overflow-x: hidden;
