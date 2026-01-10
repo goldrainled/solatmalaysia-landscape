@@ -1,13 +1,7 @@
-/* styles.css — Optimized for Option A (NO JS scaling)
-   - Mobile-first responsive
-   - No transform()/scale() required
-   - Constrained max-width so UI doesn't blow up on desktop/TV
-   - Invisible scrollbars, smooth touch scrolling
-   - Prevent Chrome auto-dark tint and overscroll glow
-*/
-
-/* reset & base */
-* { box-sizing: border-box; }
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     margin: 0;
@@ -65,51 +59,28 @@ html, body {
   100% { opacity: 0; transform: scale(1.30); }
 }
 
-#viewportHost,
-.app-root,
-.scroll-area {
-    background: transparent !important;
-}
-
-#viewportHost,
-.app-root {
+/* ============================================================
+   MAIN APP CONTAINER
+============================================================ */
+#app {
     position: relative;
-    z-index: 2;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* viewport host */
-#viewportHost {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-/* app root */
-.app-root {
-    width: 100%;
-    max-width: 1224px;
-    height: 100%;
-    padding: 22px 16px;
-    overflow: hidden;          /* ← 改这里 */
-}
-
-/* layout area */
+/* ============================================================
+   MAIN GRID
+============================================================ */
 .scroll-area {
-    width: 100%;
-    height: 100%;
     display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 4vh 4vw;
+    padding: 4vh 4vw;
+    width: 100vw;
+    height: 100vh;
 }
-
-/* prayer list auto-fit */
-.right-col {
-    display: grid;
-    grid-auto-rows: 1fr;       /* auto adapt */
-    gap: 1.2vh;
-}
-
 
 /* HEADER */
 .header-area {
