@@ -121,9 +121,9 @@ html, body {
     background: rgba(0, 0, 0, 0.45);
     padding: 2vh 2vw;
     border-radius: 18px;
-    border: 2px solid #3d3a32;
+    border: 1px solid rgba(255,255,255,0.12);
     text-align: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
     font-weight: 700;
 }
 
@@ -167,7 +167,7 @@ html, body {
     background: rgba(0, 0, 0, 0.45);
     padding: 20px 24px;
     border-radius: 22px;
-    border: 2px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 0 20px rgba(0,0,0,0.45);
     min-width: 160px;
     min-height: 170px;
@@ -208,7 +208,7 @@ html, body {
     padding: 1.8vh 1.4vw;
     font-size: 1.4vw;
     border-radius: 14px;
-    border: 2px solid #3a352c;
+    border: 1px solid rgba(255,255,255,0.12);
     display: flex;
     justify-content: space-between;
     font-weight: 700;
@@ -218,5 +218,5 @@ html, body {
     background: #c7a000 !important;
     border: 3px solid #ffe44c !important;
     color: #000 !important;
-    box-shadow: 0 0 20px #ffeb7a;
+    box-shadow: 0 0 18px #ffea73;
 }
