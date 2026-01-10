@@ -1,14 +1,7 @@
-
-/* styles.css — Optimized for Option A (NO JS scaling)
-   - Mobile-first responsive
-   - No transform()/scale() required
-   - Constrained max-width so UI doesn't blow up on desktop/TV
-   - Invisible scrollbars, smooth touch scrolling
-   - Prevent Chrome auto-dark tint and overscroll glow
-*/
-
-/* reset & base */
-* { box-sizing: border-box; }
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     margin: 0;
@@ -66,52 +59,28 @@ html, body {
   100% { opacity: 0; transform: scale(1.30); }
 }
 
-/* =============================================================
-   FIX: Always show slideshow behind content
-============================================================= */
-#viewportHost,
-.app-root,
-.scroll-area {
-    background: transparent !important;
-}
-
-#viewportHost,
-.app-root {
+/* ============================================================
+   MAIN APP CONTAINER
+============================================================ */
+#app {
     position: relative;
-    z-index: 2;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* viewportHost: fixed layer that centers the app */
-#viewportHost {
-    position: fixed;
-    inset: 0;                         /* top/right/bottom/left = 0 */
-    display: flex;
-    align-items: center;              /* vertical center */
-    justify-content: center;          /* horizontal center */
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-    overflow: hidden;                 /* host never scrolls */
+/* ============================================================
+   MAIN GRID
+============================================================ */
+.scroll-area {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 4vh 4vw;
+    padding: 4vh 4vw;
+    width: 100vw;
+    height: 100vh;
 }
-
-/* app-root: responsive container that can scroll vertically if content taller than viewport */
-.app-root {
-    width: 100%;
-    max-width: 320px;                /* design constraint — prevents huge scaling on desktop */
-    min-width: 1224px;                 /* ensure small phones are handled */
-    height: 100%;
-    overflow-y: auto;                 /* allow vertical scrolling when needed */
-    overflow-x: hidden;
-    padding: 22px 16px;               /* page padding */
-    display: block;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-}
-
-/* hide scrollbars visually but keep scrolling functional */
-.app-root {
-    scrollbar-width: none;            /* Firefox */
-    -ms-overflow-style: none;         /* IE/Edge */
-}
-.app-root::-webkit-scrollbar { display: none; } /* Chrome, Safari */
 
 /* HEADER */
 .header-area {
