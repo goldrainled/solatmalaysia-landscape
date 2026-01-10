@@ -1,91 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>Solat Display - PHG01</title>
-<link rel="stylesheet" href="../styles.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Solat Display Landscape - PHG01</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <div class="slideshow-bg">
-    <img src="../bg1.jpg" alt="">
-    <img src="../bg2.jpg" alt="">
-    <img src="../bg3.jpg" alt="">
-    <img src="../bg4.jpg" alt="">
-    <img src="../bg5.jpg" alt="">
+    <img src="bg1.jpg" alt="">
+    <img src="bg2.jpg" alt="">
+    <img src="bg3.jpg" alt="">
+    <img src="bg4.jpg" alt="">
+    <img src="bg5.jpg" alt="">
 </div>
 
-<div id="viewportHost">
-<div id="app" class="app-root">
-<div class="scroll-area">
+<div id="app">
+  <div class="scroll-area">
 
-<div class="header-area">
-    <div id="dateTodayG" class="header-row">Loading date...</div>
-    <div id="dateTodayH" class="header-row">Loading Hijri...</div>
-    <div id="zoneName" class="header-row location-row">Loading zone...</div>
-</div>
+    <div class="header-area">
+      <div id="dateTodayG">Loading date...</div>
+      <div id="dateTodayH">Loading Hijri...</div>
+      <div id="zoneName">Loading zone...</div>
+    </div>
+	
+	<!-- Current Prayer -->
+    <div class="left-col">
 
-<div class="card">
-  <div class="card-title">Waktu Sekarang</div>
-  <div id="currentTime" class="time-big">--:--:--</div>
-</div>
+      <div class="row-two">
+        <div class="card top-card">
+          <div class="top-inner">
+            <div id="currentPrayerName" class="small-label">--</div>
+            <div id="currentPrayerTime" class="big-time">--:--</div>            
+          </div>
+        </div>
 
-<div class="card card-current">
-  <div id="currentPrayerName" class="time-label">--</div>
-  <div id="currentPrayerTime" class="time-medium">--:--</div>
-</div>
+	<!-- Waktu Sekarang -->
+        <div class="card top-card">
+          <div class="top-inner">
+            <div class="card-title">Waktu Sekarang</div>
+            <div id="currentTime" class="big-time">--:--:--</div>
+          </div>
+        </div>
+      </div>
+	  
+	<!-- Menuju -->
+      <div class="card menuju-card" style="margin-top:1.6vh;">
+        <div class="card-title">Menuju</div>
+        <div id="nextPrayerNameLarge" class="big-next">--</div>
+      </div>
 
-<div class="card">
-  <div class="card-title">Menuju</div>
-  <div id="nextPrayerNameLarge" class="time-big">--</div>
-</div>
+	<!-- Countdown -->		
+      <div class="count-label">Waktu Solat Seterusnya</div>
 
-<div class="section-title">Waktu Solat Seterusnya</div>
-<div class="countdown-container">
-  <div class="count-item"><div id="cdHour" class="count-number">00</div><div class="count-text">JAM</div></div>
-  <div class="count-item"><div id="cdMin" class="count-number">00</div><div class="count-text">MINIT</div></div>
-  <div class="count-item"><div id="cdSec" class="count-number">00</div><div class="count-text">SAAT</div></div>
-</div>
+      <div class="countdown-container">
+        <div class="count-item">
+            <div id="cdHour" class="count-number">00</div>
+            <div class="count-text">JAM</div>
+        </div>
+        <div class="count-item">
+            <div id="cdMin" class="count-number">00</div>
+            <div class="count-text">MINIT</div>
+        </div>
+        <div class="count-item">
+            <div id="cdSec" class="count-number">00</div>
+            <div class="count-text">SAAT</div>
+        </div>
+      </div>
 
-<!-- Prayer rows with Jawi labels -->
-<div id="cardImsak" class="prayer-row">
-    <span class="prayer-label" data-name="Imsak">Imsak</span>
-    <span id="imsakTime">--:--</span>
-</div>
+    </div>
+	
+	<!-- Prayer List -->
+    <div class="right-col">
+      <div id="cardIsmak" class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
+      <div id="cardSubuh" class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
+      <div id="cardSyuruk" class="prayer-row"><span>Syuruk</span><span id="syurukTime">--:--</span></div>
+      <div id="cardZohor" class="prayer-row"><span>Zohor</span><span id="zohorTime">--:--</span></div>
+      <div id="cardAsar" class="prayer-row"><span>Asar</span><span id="asarTime">--:--</span></div>
+      <div id="cardMaghrib" class="prayer-row"><span>Maghrib</span><span id="maghribTime">--:--</span></div>
+      <div id="cardIsyak" class="prayer-row"><span>Isyak</span><span id="isyakTime">--:--</span></div>
+    </div>
 
-<div id="cardSubuh" class="prayer-row">
-    <span class="prayer-label" data-name="Subuh">Subuh</span>
-    <span id="subuhTime">--:--</span>
-</div>
-
-<div id="cardSyuruk" class="prayer-row">
-    <span class="prayer-label" data-name="Syuruk">Syuruk</span>
-    <span id="syurukTime">--:--</span>
-</div>
-
-<div id="cardZohor" class="prayer-row">
-    <span class="prayer-label" data-name="Zohor">Zohor</span>
-    <span id="zohorTime">--:--</span>
-</div>
-
-<div id="cardAsar" class="prayer-row">
-    <span class="prayer-label" data-name="Asar">Asar</span>
-    <span id="asarTime">--:--</span>
-</div>
-
-<div id="cardMaghrib" class="prayer-row">
-    <span class="prayer-label" data-name="Maghrib">Maghrib</span>
-    <span id="maghribTime">--:--</span>
-</div>
-
-<div id="cardIsyak" class="prayer-row">
-    <span class="prayer-label" data-name="Isyak">Isyak</span>
-    <span id="isyakTime">--:--</span>
-</div>
-
-</div>
-</div>
+  </div>
 </div>
 
 <script>
@@ -100,7 +97,7 @@
 (function(){
 
   // ===== CONFIGURATION =====
-  const zone = "PHG01"; // Your prayer zone
+  const zone = window.SELECTED_ZONE; // Your prayer zone
 
   // MP3 URLs
   const URL_SUBUH  = "https://raw.githubusercontent.com/goldrainled/solatmalaysia/main/azan/azan_subuh.mp3";
@@ -202,74 +199,80 @@
     const now = new Date();
     const hh = String(now.getHours()).padStart(2,"0");
     const mm = String(now.getMinutes()).padStart(2,"0");
-    const ss = String(now.getSeconds()).padStart(2,"0");
-    const current = `${hh}:${mm}:${ss}`;
+	const currentHM = `${hh}:${mm}`;
 
     const day = now.getDay(); // Friday = 5
 
     // -------------------------
     // SUBUH (special Azan)
     // -------------------------
-    if (!playedToday.subuh && current === prayTimes.subuh){
-      playedToday.subuh = true;
-      playAudio("subuh");
-    }
+    if (!playedToday.subuh &&
+    currentHM === prayTimes.subuh.substring(0,5)) {
+  playedToday.subuh = true;
+  playAudio("subuh");
+}
 
     // -------------------------
-    // SYURUK â€?no audio
+    // SYURUK - no audio
     // -------------------------
 
     // -------------------------
-    // ZOHOR (Monâ€“Thu)
+    // ZOHOR (Mon-Thu)
     // -------------------------
     if (day !== 5){ // Not Friday
-      if (!playedToday.zohor && current === prayTimes.zohor){
-        playedToday.zohor = true;
-        playAudio("normal");
-      }
-    }
-
-    // -------------------------
-    // FRIDAY â€?Jumaat Dual Azan Mode
-    // -------------------------
-    if (day === 5){
-
-      // Calculate Friday Azan 1 (30 minutes earlier)
-      const fridayA1Time = minusMinutes(prayTimes.zohor, 30);
-
-      // Friday Azan 1
-      if (!playedToday.fri1 && current === fridayA1Time){
-        playedToday.fri1 = true;
-        console.log("Friday Azan 1 (30 minutes earlier)");
-        playAudio("fri1");
-      }
-
-      // Friday Azan 2 (official Zohor Azan)
-      if (!playedToday.fri2 && current === prayTimes.zohor){
-        playedToday.fri2 = true;
-        console.log("Friday Azan 2 (Zohor)");
-        playAudio("normal");
-      }
-    }
-
-    // -------------------------
-    // ASAR / MAGHRIB / ISYAK
-    // -------------------------
-    if (!playedToday.asar && current === prayTimes.asar){
-      playedToday.asar = true;
-      playAudio("normal");
-    }
-
-    if (!playedToday.maghrib && current === prayTimes.maghrib){
-      playedToday.maghrib = true;
-      playAudio("normal");
-    }
-
-    if (!playedToday.isyak && current === prayTimes.isyak){
-      playedToday.isyak = true;
-      playAudio("normal");
-    }
+      if (!playedToday.zohor &&
+    currentHM === prayTimes.zohor.substring(0,5)) {
+  playedToday.zohor = true;
+  playAudio("normal");
   }
+}
+
+// -------------------------
+// FRIDAY - Jumaat Dual Azan Mode
+// -------------------------
+if (day === 5) {
+
+  // Calculate Friday Azan 1 (30 minutes earlier)
+  const fridayA1Time = minusMinutes(prayTimes.zohor, 30);
+
+  // Friday Azan 1
+  if (!playedToday.fri1 &&
+      currentHM === fridayA1Time.substring(0,5)) {
+    playedToday.fri1 = true;
+    console.log("Friday Azan 1 (30 minutes earlier)");
+    playAudio("fri1");
+  }
+
+  // Friday Azan 2 (official Zohor Azan)
+  if (!playedToday.fri2 &&
+      currentHM === prayTimes.zohor.substring(0,5)) {
+    playedToday.fri2 = true;
+    console.log("Friday Azan 2 (Zohor)");
+    playAudio("normal");
+  }
+}
+
+// -------------------------
+// ASAR / MAGHRIB / ISYAK
+// -------------------------
+if (!playedToday.asar &&
+    currentHM === prayTimes.asar.substring(0,5)) {
+  playedToday.asar = true;
+  playAudio("normal");
+}
+
+if (!playedToday.maghrib &&
+    currentHM === prayTimes.maghrib.substring(0,5)) {
+  playedToday.maghrib = true;
+  playAudio("normal");
+}
+
+if (!playedToday.isyak &&
+    currentHM === prayTimes.isyak.substring(0,5)) {
+  playedToday.isyak = true;
+  playAudio("normal");
+  }
+}
 
   // Init
   loadPrayerTimes();

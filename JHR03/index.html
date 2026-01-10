@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Solat Display Landscape â€?JHR03</title>
+<title>Solat Display Landscape - JHR03</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -97,7 +97,7 @@
 (function(){
 
   // ===== CONFIGURATION =====
-  const zone = "JHR03"; // Your prayer zone
+  const zone = window.SELECTED_ZONE; // Your prayer zone
 
   // MP3 URLs
   const URL_SUBUH  = "https://raw.githubusercontent.com/goldrainled/solatmalaysia/main/azan/azan_subuh.mp3";
@@ -199,74 +199,80 @@
     const now = new Date();
     const hh = String(now.getHours()).padStart(2,"0");
     const mm = String(now.getMinutes()).padStart(2,"0");
-    const ss = String(now.getSeconds()).padStart(2,"0");
-    const current = `${hh}:${mm}:${ss}`;
+	const currentHM = `${hh}:${mm}`;
 
     const day = now.getDay(); // Friday = 5
 
     // -------------------------
     // SUBUH (special Azan)
     // -------------------------
-    if (!playedToday.subuh && current === prayTimes.subuh){
-      playedToday.subuh = true;
-      playAudio("subuh");
-    }
+    if (!playedToday.subuh &&
+    currentHM === prayTimes.subuh.substring(0,5)) {
+  playedToday.subuh = true;
+  playAudio("subuh");
+}
 
     // -------------------------
-    // SYURUK â€?no audio
+    // SYURUK - no audio
     // -------------------------
 
     // -------------------------
-    // ZOHOR (Monâ€“Thu)
+    // ZOHOR (Mon-Thu)
     // -------------------------
     if (day !== 5){ // Not Friday
-      if (!playedToday.zohor && current === prayTimes.zohor){
-        playedToday.zohor = true;
-        playAudio("normal");
-      }
-    }
-
-    // -------------------------
-    // FRIDAY â€?Jumaat Dual Azan Mode
-    // -------------------------
-    if (day === 5){
-
-      // Calculate Friday Azan 1 (30 minutes earlier)
-      const fridayA1Time = minusMinutes(prayTimes.zohor, 30);
-
-      // Friday Azan 1
-      if (!playedToday.fri1 && current === fridayA1Time){
-        playedToday.fri1 = true;
-        console.log("Friday Azan 1 (30 minutes earlier)");
-        playAudio("fri1");
-      }
-
-      // Friday Azan 2 (official Zohor Azan)
-      if (!playedToday.fri2 && current === prayTimes.zohor){
-        playedToday.fri2 = true;
-        console.log("Friday Azan 2 (Zohor)");
-        playAudio("normal");
-      }
-    }
-
-    // -------------------------
-    // ASAR / MAGHRIB / ISYAK
-    // -------------------------
-    if (!playedToday.asar && current === prayTimes.asar){
-      playedToday.asar = true;
-      playAudio("normal");
-    }
-
-    if (!playedToday.maghrib && current === prayTimes.maghrib){
-      playedToday.maghrib = true;
-      playAudio("normal");
-    }
-
-    if (!playedToday.isyak && current === prayTimes.isyak){
-      playedToday.isyak = true;
-      playAudio("normal");
-    }
+      if (!playedToday.zohor &&
+    currentHM === prayTimes.zohor.substring(0,5)) {
+  playedToday.zohor = true;
+  playAudio("normal");
   }
+}
+
+// -------------------------
+// FRIDAY - Jumaat Dual Azan Mode
+// -------------------------
+if (day === 5) {
+
+  // Calculate Friday Azan 1 (30 minutes earlier)
+  const fridayA1Time = minusMinutes(prayTimes.zohor, 30);
+
+  // Friday Azan 1
+  if (!playedToday.fri1 &&
+      currentHM === fridayA1Time.substring(0,5)) {
+    playedToday.fri1 = true;
+    console.log("Friday Azan 1 (30 minutes earlier)");
+    playAudio("fri1");
+  }
+
+  // Friday Azan 2 (official Zohor Azan)
+  if (!playedToday.fri2 &&
+      currentHM === prayTimes.zohor.substring(0,5)) {
+    playedToday.fri2 = true;
+    console.log("Friday Azan 2 (Zohor)");
+    playAudio("normal");
+  }
+}
+
+// -------------------------
+// ASAR / MAGHRIB / ISYAK
+// -------------------------
+if (!playedToday.asar &&
+    currentHM === prayTimes.asar.substring(0,5)) {
+  playedToday.asar = true;
+  playAudio("normal");
+}
+
+if (!playedToday.maghrib &&
+    currentHM === prayTimes.maghrib.substring(0,5)) {
+  playedToday.maghrib = true;
+  playAudio("normal");
+}
+
+if (!playedToday.isyak &&
+    currentHM === prayTimes.isyak.substring(0,5)) {
+  playedToday.isyak = true;
+  playAudio("normal");
+  }
+}
 
   // Init
   loadPrayerTimes();
