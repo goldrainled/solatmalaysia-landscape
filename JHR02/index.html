@@ -5,39 +5,245 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Solat Display Landscape - JHR02</title>
 <link rel="stylesheet" href="../styles.css" />
+
+<style>
+
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent !important;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light !important;
+    overscroll-behavior: none;
+}
+
+/* =============================================================
+   BACKGROUND
+============================================================= */
+.slideshow-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.slideshow-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: zoomBG 40s infinite ease-in-out;
+}
+
+.slideshow-bg img:nth-child(1) { animation-delay: 0s; }
+.slideshow-bg img:nth-child(2) { animation-delay: 8s; }
+.slideshow-bg img:nth-child(3) { animation-delay: 16s; }
+.slideshow-bg img:nth-child(4) { animation-delay: 24s; }
+.slideshow-bg img:nth-child(5) { animation-delay: 32s; }
+
+@keyframes zoomBG {
+  0%   { opacity: 0; transform: scale(1); }
+  10%  { opacity: 1; transform: scale(1.12); }
+  40%  { opacity: 1; transform: scale(1.22); }
+  55%  { opacity: 0; transform: scale(1.27); }
+  100% { opacity: 0; transform: scale(1.30); }
+}
+
+/* ============================================================
+   MAIN GRID
+============================================================ */
+#app {
+    position: relative;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+}
+
+.scroll-area {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4vh 4vw;
+    padding: 4vh 4vw;
+    width: 100%;
+    height: 100%;
+}
+
+/* HEADER */
+.header-area {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+
+#dateTodayG { font-size: 3vw; font-weight: 900; }
+#dateTodayH, #zoneName { font-size: 1.7vw; margin-top: 1vh; font-weight: 600; }
+
+/* ============================================================
+   LEFT SIDE GRID
+============================================================ */
+.left-col {
+    display: grid;
+    grid-template-rows:
+        auto /* top cards */
+        auto /* menuju */
+        auto /* countdown label */
+        auto /* countdown numbers */
+        ;
+    gap: 2vh;
+    height: 100%;
+}
+
+/* TOP CARDS */
+.row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3vw;
+}
+
+.top-card {
+    display: flex;
+    height: 100%;
+    font-weight: 700;
+    background: rgba(0,0,0,0.45);
+    padding: 2vh 2vw;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    text-align: center;
+}
+
+.top-inner { margin: auto; }
+
+.card-title { font-size: 1.6vw; font-weight: 700; margin-bottom: 1vh; }
+.big-time { font-size: 2.8vw; font-weight: 900; }
+.small-label { font-size: 1.6vw; font-weight: 700; }
+.big-next { font-size: 2.8vw; font-weight: 900; }
+
+/* MENUJU CARD */
+.menuju-card {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 2vh 2vw;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    text-align: center;
+    font-weight: 700;
+}
+
+/* COUNTDOWN */
+.count-label {
+    text-align: center;
+    font-size: 1.6vw;
+    font-weight: 800;
+}
+
+.countdown-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;    /* Prevents overflow (important for LED displays) */
+    margin: 0 auto;
+    gap: 4%;
+}
+
+.count-item {
+    flex: 1;                 /* Automatically fills available space evenly */
+    min-width: 0;            /* Prevents flex item overflow (critical for LED controllers) */
+
+    background: rgba(0,0,0,0.45);
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 20px rgba(0,0,0,0.45);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2vh 0;
+}
+
+.count-number { font-size: 3.4vw; font-weight: 900; }
+.count-text { font-size: 1.2vw; font-weight: 700; margin-top: 1vh; }
+
+/* ============================================================
+   RIGHT PRAYER LIST
+============================================================ */
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4vh;
+    height: 100%;
+}
+
+.prayer-row {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 1.8vh 1.4vw;
+    font-size: 1.4vw;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-height: 0;
+}
+
+.prayer-row span:first-child { text-align: left; }
+.prayer-row span:last-child { text-align: right; }
+
+</style>
+
 </head>
 <body>
 
 <div class="slideshow-bg">
-    <img src="../bg1.jpg">
-    <img src="../bg2.jpg">
-    <img src="../bg3.jpg">
-    <img src="../bg4.jpg">
-    <img src="../bg5.jpg">
+    <img src="bg1.jpg" alt="">
+    <img src="bg2.jpg" alt="">
+    <img src="bg3.jpg" alt="">
+    <img src="bg4.jpg" alt="">
+    <img src="bg5.jpg" alt="">
 </div>
 
-<div id="viewportHost">
-<div id="app" class="app-root">
-<div class="scroll-area">
+<div id="app">
+  <div class="scroll-area">
 
     <div class="header-area">
       <div id="dateTodayG">Loading date...</div>
       <div id="dateTodayH">Loading Hijri...</div>
       <div id="zoneName">Loading zone...</div>
     </div>
-	
-	<!-- Current Prayer -->
+
+    <!-- LEFT SIDE -->
     <div class="left-col">
 
+      <!-- Current + Time Now -->
       <div class="row-two">
         <div class="card top-card">
           <div class="top-inner">
             <div id="currentPrayerName" class="small-label">--</div>
-            <div id="currentPrayerTime" class="big-time">--:--</div>            
+            <div id="currentPrayerTime" class="big-time">--:--</div>
           </div>
         </div>
 
-	<!-- Waktu Sekarang -->
         <div class="card top-card">
           <div class="top-inner">
             <div class="card-title">Waktu Sekarang</div>
@@ -45,16 +251,15 @@
           </div>
         </div>
       </div>
-	  
-	<!-- Menuju -->
-      <div class="card menuju-card" style="margin-top:1.6vh;">
+
+      <!-- Menuju -->
+      <div class="card menuju-card">
         <div class="card-title">Menuju</div>
         <div id="nextPrayerNameLarge" class="big-next">--</div>
       </div>
 
-	<!-- Countdown -->		
+      <!-- Countdown -->
       <div class="count-label">Waktu Solat Seterusnya</div>
-
       <div class="countdown-container">
         <div class="count-item">
             <div id="cdHour" class="count-number">00</div>
@@ -71,8 +276,8 @@
       </div>
 
     </div>
-	
-	<!-- Prayer List -->
+
+    <!-- RIGHT PRAYER LIST -->
     <div class="right-col">
       <div id="cardImsak" class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
       <div id="cardSubuh" class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
@@ -286,5 +491,3 @@ if (!playedToday.isyak &&
 
 </body>
 </html>
-
-
