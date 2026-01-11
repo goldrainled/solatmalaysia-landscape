@@ -4,7 +4,209 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Solat Display Landscape</title>
-<link rel="stylesheet" href="styles.css" />
+
+<style>
+
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: transparent !important;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light !important;
+    overscroll-behavior: none;
+}
+
+/* =============================================================
+   BACKGROUND
+============================================================= */
+.slideshow-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.slideshow-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: zoomBG 40s infinite ease-in-out;
+}
+
+.slideshow-bg img:nth-child(1) { animation-delay: 0s; }
+.slideshow-bg img:nth-child(2) { animation-delay: 8s; }
+.slideshow-bg img:nth-child(3) { animation-delay: 16s; }
+.slideshow-bg img:nth-child(4) { animation-delay: 24s; }
+.slideshow-bg img:nth-child(5) { animation-delay: 32s; }
+
+@keyframes zoomBG {
+  0%   { opacity: 0; transform: scale(1); }
+  10%  { opacity: 1; transform: scale(1.12); }
+  40%  { opacity: 1; transform: scale(1.22); }
+  55%  { opacity: 0; transform: scale(1.27); }
+  100% { opacity: 0; transform: scale(1.30); }
+}
+
+/* ============================================================
+   MAIN GRID
+============================================================ */
+#app {
+    position: relative;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+}
+
+.scroll-area {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4vh 4vw;
+    padding: 4vh 4vw;
+    width: 100%;
+    height: 100%;
+}
+
+/* HEADER */
+.header-area {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+
+#dateTodayG { font-size: 3vw; font-weight: 900; }
+#dateTodayH, #zoneName { font-size: 1.7vw; margin-top: 1vh; font-weight: 600; }
+
+/* ============================================================
+   LEFT SIDE GRID
+============================================================ */
+.left-col {
+    display: grid;
+    grid-template-rows:
+        auto /* top cards */
+        auto /* menuju */
+        auto /* countdown label */
+        auto /* countdown numbers */
+        ;
+    gap: 2vh;
+    height: 100%;
+}
+
+/* TOP CARDS */
+.row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3vw;
+}
+
+.top-card {
+    display: flex;
+    height: 100%;
+    font-weight: 700;
+    background: rgba(0,0,0,0.45);
+    padding: 2vh 2vw;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    text-align: center;
+}
+
+.top-inner { margin: auto; }
+
+.card-title { font-size: 1.6vw; font-weight: 700; margin-bottom: 1vh; }
+.big-time { font-size: 2.8vw; font-weight: 900; }
+.small-label { font-size: 1.6vw; font-weight: 700; }
+.big-next { font-size: 2.8vw; font-weight: 900; }
+
+/* MENUJU CARD */
+.menuju-card {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 2vh 2vw;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    text-align: center;
+    font-weight: 700;
+}
+
+/* COUNTDOWN */
+.count-label {
+    text-align: center;
+    font-size: 1.6vw;
+    font-weight: 800;
+}
+
+.countdown-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;    /* Prevents overflow (important for LED displays) */
+    margin: 0 auto;
+    gap: 4%;
+}
+
+.count-item {
+    flex: 1;                 /* Automatically fills available space evenly */
+    min-width: 0;            /* Prevents flex item overflow (critical for LED controllers) */
+
+    background: rgba(0,0,0,0.45);
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 20px rgba(0,0,0,0.45);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2vh 0;
+}
+
+.count-number { font-size: 3.4vw; font-weight: 900; }
+.count-text { font-size: 1.2vw; font-weight: 700; margin-top: 1vh; }
+
+/* ============================================================
+   RIGHT PRAYER LIST
+============================================================ */
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4vh;
+    height: 100%;
+}
+
+.prayer-row {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 1.8vh 1.4vw;
+    font-size: 1.4vw;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-height: 0;
+}
+
+.prayer-row span:first-child { text-align: left; }
+.prayer-row span:last-child { text-align: right; }
+
+</style>
+
 </head>
 <body>
 
@@ -16,28 +218,27 @@
     <img src="bg5.jpg" alt="">
 </div>
 
-<div id="viewportHost">
-<div id="app" class="app-root">
-<div class="scroll-area">
+<div id="app">
+  <div class="scroll-area">
 
     <div class="header-area">
       <div id="dateTodayG">Loading date...</div>
       <div id="dateTodayH">Loading Hijri...</div>
       <div id="zoneName">Loading zone...</div>
     </div>
-	
-	<!-- Current Prayer -->
+
+    <!-- LEFT SIDE -->
     <div class="left-col">
 
+      <!-- Current + Time Now -->
       <div class="row-two">
         <div class="card top-card">
           <div class="top-inner">
             <div id="currentPrayerName" class="small-label">--</div>
-            <div id="currentPrayerTime" class="big-time">--:--</div>            
+            <div id="currentPrayerTime" class="big-time">--:--</div>
           </div>
         </div>
 
-	<!-- Waktu Sekarang -->
         <div class="card top-card">
           <div class="top-inner">
             <div class="card-title">Waktu Sekarang</div>
@@ -45,16 +246,15 @@
           </div>
         </div>
       </div>
-	  
-	<!-- Menuju -->
-      <div class="card menuju-card" style="margin-top:1.6vh;">
+
+      <!-- Menuju -->
+      <div class="card menuju-card">
         <div class="card-title">Menuju</div>
         <div id="nextPrayerNameLarge" class="big-next">--</div>
       </div>
 
-	<!-- Countdown -->		
+      <!-- Countdown -->
       <div class="count-label">Waktu Solat Seterusnya</div>
-
       <div class="countdown-container">
         <div class="count-item">
             <div id="cdHour" class="count-number">00</div>
@@ -71,8 +271,8 @@
       </div>
 
     </div>
-	
-	<!-- Prayer List -->
+
+    <!-- RIGHT PRAYER LIST -->
     <div class="right-col">
       <div id="cardImsak" class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
       <div id="cardSubuh" class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
@@ -85,6 +285,203 @@
 
   </div>
 </div>
+
+<script src="main.js"></script>
+	
+    <!-- ===================== AZAN 5-WAKTU + FRIDAY AZAN 1 ===================== -->
+<script>
+(function(){
+
+  // ===== CONFIGURATION =====
+  const zone = window.SELECTED_ZONE; // Your prayer zone
+
+  // MP3 URLs
+  const URL_SUBUH  = "https://raw.githubusercontent.com/goldrainled/solatmalaysia/main/azan/azan_subuh.mp3";
+  const URL_NORMAL = "https://raw.githubusercontent.com/goldrainled/solatmalaysia/main/azan/azan_normal.mp3";
+
+  // Azan used per prayer
+  const AUDIO_URLS = {
+    subuh: URL_SUBUH,   // Special Fajr Azan (with "As-salatu khayrun minan naum")
+    zohor: URL_NORMAL,
+    asar: URL_NORMAL,
+    maghrib: URL_NORMAL,
+    isyak: URL_NORMAL
+  };
+
+  // Friday Azan 1 (30 minutes earlier) uses the normal Azan
+  const FRIDAY_AZAN1_URL = URL_NORMAL;
+
+  // ===== INTERNAL VARIABLES =====
+  let prayTimes = {};
+  let playedToday = {};
+  let today = getDateString();
+  let audioMap = {};
+
+  // Preload audio files
+  function preloadAudio(key, url){
+    const a = new Audio(url);
+    a.preload = "auto";
+    audioMap[key] = a;
+  }
+
+  preloadAudio("subuh", URL_SUBUH);
+  preloadAudio("normal", URL_NORMAL);
+  preloadAudio("fri1", FRIDAY_AZAN1_URL);
+
+  // Return YYYY-MM-DD
+  function getDateString(d = new Date()){
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  }
+
+  // Load today's prayer times from e-solat API
+  async function loadPrayerTimes(){
+    try{
+      const url = `https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=today&zone=${zone}`;
+      const res = await fetch(url);
+      const json = await res.json();
+      const p = json.prayerTime[0];
+
+      prayTimes = {
+        subuh : p.subuh,
+        syuruk: p.syuruk,   // Not used for audio
+        zohor : p.zohor,
+        asar  : p.asr,
+        maghrib: p.maghrib,
+        isyak : p.isyak
+      };
+
+      // Reset daily status when date changes
+      const nowDay = getDateString();
+      if (nowDay !== today){
+        today = nowDay;
+        playedToday = {};
+      }
+
+      console.log("Prayer times loaded:", prayTimes);
+
+    } catch(e){
+      console.error("API error:", e);
+    }
+  }
+
+  // Play a selected audio
+  async function playAudio(key){
+    try{
+      await audioMap[key].play();
+      console.log("Played:", key);
+    } catch (e){
+      console.error("Play failed:", key, e);
+    }
+  }
+
+  // Returns HH:MM:SS minus X minutes
+  function minusMinutes(hhmmss, min){
+    let [h,m,s] = hhmmss.split(":").map(Number);
+    let total = h*3600 + m*60 + s - min*60;
+    if (total < 0) total += 24*3600;
+
+    const H = String(Math.floor(total/3600)).padStart(2,"0");
+    const M = String(Math.floor((total%3600)/60)).padStart(2,"0");
+    const S = String(total%60).padStart(2,"0");
+
+    return `${H}:${M}:${S}`;
+  }
+
+  // Called every second to check whether it's Azan time
+  function tick(){
+
+    if (!prayTimes.zohor) return; // API not loaded yet
+
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2,"0");
+    const mm = String(now.getMinutes()).padStart(2,"0");
+	const currentHM = `${hh}:${mm}`;
+
+    const day = now.getDay(); // Friday = 5
+
+    // -------------------------
+    // SUBUH (special Azan)
+    // -------------------------
+    if (!playedToday.subuh &&
+    currentHM === prayTimes.subuh.substring(0,5)) {
+  playedToday.subuh = true;
+  playAudio("subuh");
+}
+
+    // -------------------------
+    // SYURUK - no audio
+    // -------------------------
+
+    // -------------------------
+    // ZOHOR (Mon-Thu)
+    // -------------------------
+    if (day !== 5){ // Not Friday
+      if (!playedToday.zohor &&
+    currentHM === prayTimes.zohor.substring(0,5)) {
+  playedToday.zohor = true;
+  playAudio("normal");
+  }
+}
+
+// -------------------------
+// FRIDAY - Jumaat Dual Azan Mode
+// -------------------------
+if (day === 5) {
+
+  // Calculate Friday Azan 1 (30 minutes earlier)
+  const fridayA1Time = minusMinutes(prayTimes.zohor, 30);
+
+  // Friday Azan 1
+  if (!playedToday.fri1 &&
+      currentHM === fridayA1Time.substring(0,5)) {
+    playedToday.fri1 = true;
+    console.log("Friday Azan 1 (30 minutes earlier)");
+    playAudio("fri1");
+  }
+
+  // Friday Azan 2 (official Zohor Azan)
+  if (!playedToday.fri2 &&
+      currentHM === prayTimes.zohor.substring(0,5)) {
+    playedToday.fri2 = true;
+    console.log("Friday Azan 2 (Zohor)");
+    playAudio("normal");
+  }
+}
+
+// -------------------------
+// ASAR / MAGHRIB / ISYAK
+// -------------------------
+if (!playedToday.asar &&
+    currentHM === prayTimes.asar.substring(0,5)) {
+  playedToday.asar = true;
+  playAudio("normal");
+}
+
+if (!playedToday.maghrib &&
+    currentHM === prayTimes.maghrib.substring(0,5)) {
+  playedToday.maghrib = true;
+  playAudio("normal");
+}
+
+if (!playedToday.isyak &&
+    currentHM === prayTimes.isyak.substring(0,5)) {
+  playedToday.isyak = true;
+  playAudio("normal");
+  }
+}
+
+  // Init
+  loadPrayerTimes();
+  setInterval(loadPrayerTimes, 5 * 60 * 1000); // Refresh API every 5 mins
+  setInterval(tick, 1000); // Check time every second
+
+})();
+</script>
+<!-- ================= END AZAN 5-WAKTU + FRIDAY AZAN 1 ================= -->
+
+</body>
+</html>
+
 
 <script src="main.js"></script>
 	
