@@ -4,10 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Solat Display Landscape - SGR01</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../styles.css" />
 </head>
+	
 <body>
-
+<!-- BACKGROUND SLIDESHOW -->
 <div class="slideshow-bg">
     <img src="../bg1.jpg">
     <img src="../bg2.jpg">
@@ -24,19 +25,19 @@
       <div id="dateTodayH">Loading Hijri...</div>
       <div id="zoneName">Loading zone...</div>
     </div>
-	
-	<!-- Current Prayer -->
+
+    <!-- LEFT SIDE -->
     <div class="left-col">
 
+      <!-- Current + Time Now -->
       <div class="row-two">
         <div class="card top-card">
           <div class="top-inner">
             <div id="currentPrayerName" class="small-label">--</div>
-            <div id="currentPrayerTime" class="big-time">--:--</div>            
+            <div id="currentPrayerTime" class="big-time">--:--</div>
           </div>
         </div>
 
-	<!-- Waktu Sekarang -->
         <div class="card top-card">
           <div class="top-inner">
             <div class="card-title">Waktu Sekarang</div>
@@ -44,16 +45,15 @@
           </div>
         </div>
       </div>
-	  
-	<!-- Menuju -->
-      <div class="card menuju-card" style="margin-top:1.6vh;">
+
+      <!-- Menuju -->
+      <div class="card menuju-card">
         <div class="card-title">Menuju</div>
         <div id="nextPrayerNameLarge" class="big-next">--</div>
       </div>
 
-	<!-- Countdown -->		
+      <!-- Countdown -->
       <div class="count-label">Waktu Solat Seterusnya</div>
-
       <div class="countdown-container">
         <div class="count-item">
             <div id="cdHour" class="count-number">00</div>
@@ -70,8 +70,8 @@
       </div>
 
     </div>
-	
-	<!-- Prayer List -->
+
+    <!-- RIGHT PRAYER LIST -->
     <div class="right-col">
       <div id="cardImsak" class="prayer-row"><span>Imsak</span><span id="imsakTime">--:--</span></div>
       <div id="cardSubuh" class="prayer-row"><span>Subuh</span><span id="subuhTime">--:--</span></div>
