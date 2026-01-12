@@ -10,7 +10,7 @@ html, body {
     width: 100%;
     min-height: 100svh;
     min-height: 100dvh;
-    background: transparent !important;
+    background: #000;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     text-rendering: optimizeLegibility;
