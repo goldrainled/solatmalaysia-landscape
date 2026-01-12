@@ -213,6 +213,7 @@ html, body {
     border: 3px solid #ffe44c !important;
     color: #000 !important;
     box-shadow: 0 0 18px #ffea73;
+}
 
 .prayer-row span:first-child { text-align: left; }
 .prayer-row span:last-child { text-align: right; }
