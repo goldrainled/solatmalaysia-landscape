@@ -87,8 +87,24 @@ html, body {
     text-align: center;
 }
 
-#dateTodayG { font-size: 3vw; font-weight: 900; }
-#dateTodayH, #zoneName { font-size: 1.7vw; margin-top: 1vh; font-weight: 600; }
+#dateTodayG {
+  font-size: 3vw;
+  font-weight: 900;
+
+  /* strong top-inner depth for large text */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+
+}
+
+#dateTodayH,
+#zoneName {
+  font-size: 1.7vw;
+  margin-top: 1vh;
+  font-weight: 600;
+
+  /* lighter inner shadow for smaller text */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
 
 /* ============================================================
    LEFT SIDE GRID
